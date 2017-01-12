@@ -1,0 +1,4 @@
+---
+  #modify Galaxy (add tools to galaxy)
+  - include: modify_galaxy.yml
+  

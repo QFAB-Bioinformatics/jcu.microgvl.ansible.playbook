@@ -1,0 +1,110 @@
+api_key: <Galaxy Admin user API key>
+galaxy_instance: <IP address for target Galaxy instance>
+tools:
+
+######################################################################
+## PACKAGES - Assembly and Annotation specific packages
+######################################################################
+
+- name: vsearch
+  owner: iuc
+  tool_panel_section_id: "otu_vsearch"
+  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+  revision: '4258854759ba'
+
+- name: biom_add_metadata
+  owner: iuc
+  tool_panel_section_id: "otu_biom"
+  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+  revision: '367b1ed91207'
+
+#- name: krona
+#  owner: ondovb
+#  tool_panel_section_id: "JCU"
+#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: '42c899125802'
+
+- name: cutadapt
+  owner: lparsons
+  tool_panel_section_id: "otu_cutadapt"
+  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+  revision: '01d94df2e32a'
+
+#- name: Pear
+#  tool_panel_section_id: "JCU"
+#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: '581e52f03c5d'
+
+- name: cdhit
+  owner: jjohnson
+  tool_panel_section_id: "otu_cdhit"
+  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+  revision: '28b7a43907f0'
+
+#- name: metaphlan
+#  owner: dannon
+#  tool_panel_section_id: "otu_metaphlan"
+#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: 'e951f9d38339'
+
+- name: kraken
+  owner: devteam
+  tool_panel_section_id: "otu_kraken"
+  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+
+#- name: repeat_masker
+#  owner: bgruening
+#  tool_panel_section_id: "otu_repeat_masker"
+#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: '5673e72241aa'
+
+- name: mothur_toolsuite
+  owner: jjohnson
+  tool_panel_section_id: "otu_mothur"
+  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+  revision: '1be61ceb20d7'
+
+#- name: tmhmm_and_signalp
+#  owner: peterjc
+#  tool_panel_section_id: "JCU"
+# tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: 'eb6ac44d4b8e'
+
+#- name: package_kraken_0_10_6_eaf8fb68
+#  owner: iuc
+#  tool_panel_section_id: "JCU"
+#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: '0743afe4dcb8'
+
+#- name: package_vsearch_1_9_7
+#  owner: iuc
+#  tool_panel_section_id: "JCU"
+#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: '9c947b9fb31'
+
+#- name: package_cutadapt_1_8
+#  owner: iuc
+#  tool_panel_section_id: "metagenomics"
+#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: '980a47047f57'
+
+#- name: "protk"
+#  owner: "iracooke"
+#  tool_shed_url: "http://toolshed.g2.bx.psu.edu/"
+#  revision: "991797b02976"
+#  tool_panel_section_id: "metagenomics"
+  
+#- name: "trans_proteomic_pipeline"
+#  owner: "iuc"
+#  tool_shed_url: "http://toolshed.g2.bx.psu.edu/"
+#  revision: "a7273394d858"
+#  tool_panel_section_id: "metagenomics"
+  
+#- name: "xtandem"
+#  owner: "iracooke"
+#  tool_shed_url: "http://toolshed.g2.bx.psu.edu/"
+#  revision: "29e2df3edf11"
+#  tool_panel_section_id: "metagenomics"
+
+
+

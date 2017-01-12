@@ -1,0 +1,41 @@
+---
+  # Versions
+  xtandem_version: ""
+  
+  # Paths
+  gvl_apps_home: "/mnt/gvl/apps"  
+
+  #tool installation variables
+
+  galaxy_tools_galaxy_instance_url: "http://localhost/galaxy/"
+
+  # A list of yml files that list the tools to be installed. See `files/tool_list.yaml.sample`
+  galaxy_tools_tool_list_files: [ "tool_list.yaml" ]
+
+  # should the playbook continue when errors are found
+  galaxy_tools_ignore_errors: true
+
+  # A system path from where this role will be run
+  galaxy_tools_base_dir: /mnt/galaxy/tmp
+
+  # Blank variable to make sure it's defined
+  galaxy_tools_api_key: ''
+
+  # A user for the Galaxy bootstrap user
+  tools_admin_email: userjcu@local.localhost
+  tools_admin_username: userjcu
+  tools_admin_password: userjcu01
+  
+  galaxy_server_dir: /mnt/galaxy/galaxy-app
+
+
+  ### this variable is not part of the original irida ansible playbook
+  galaxy_server_var: /mnt/galaxy/var
+
+  # A system path where a virtualend for Galaxy is installed
+  galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv"
+
+  # A system path for Galaxy's main configuration file
+  galaxy_config_file: "{{ galaxy_server_dir }}/config/galaxy.ini"
+
+...
