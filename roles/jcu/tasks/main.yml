@@ -3,4 +3,4 @@
   - include: modify_galaxy.yml
   
   #Install extra R libraries
-  - include: install_extra_Rpackages.yml
+  #- include: install_extra_Rpackages.yml
