@@ -1,0 +1,27 @@
+---
+
+  #Install extra R libraries.
+  - name: Add some R packages.
+    command: >
+      /home/linuxbrew/.linuxbrew/bin/Rscript --slave --no-save --no-restore-history -e "if (! ('{{ item }}' %in% installed.packages()[,'Package'])) { install.packages(pkgs='{{ item }}', repos=c('http://cran.ms.unimelb.edu.au/')); print('Added'); } else { print('Already installed'); }"
+    register: r_result
+    failed_when: "r_result.rc != 0 or 'had non-zero exit status' in r_result.stderr"
+    changed_when: "'Added' in r_result.stdout"
+    with_items:
+      - ape
+    become: yes
+    become_user: root
+
+  - name: Add some R packages.
+    command: >
+      /home/linuxbrew/.linuxbrew/bin/Rscript --slave --no-save --no-restore-history -e "source('http://bioconductor.org/biocLite.R'); if (! ('{{ item }}' %in% installed.packages()[,'Package'])) { biocLite('{{ item }}'); print('Added'); } else { print('Already installed'); }"
+    register: b_result
+    failed_when: "b_result.rc != 0 or 'had non-zero exit status' in b_result.stderr"
+    changed_when: "'Added' in b_result.stdout"
+    with_items:
+      - limma
+      - phyloseq
+      - DESeq2
+      - edgeR
+    become: yes
+    become_user: root
