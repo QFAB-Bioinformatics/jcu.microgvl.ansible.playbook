@@ -2,3 +2,5 @@
   #modify Galaxy (add tools to galaxy)
   - include: modify_galaxy.yml
   
+  #Install extra R libraries
+  - include: install_extra_Rpackages.yml
