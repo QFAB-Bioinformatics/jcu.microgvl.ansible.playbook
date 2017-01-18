@@ -4,6 +4,9 @@
   
   # Paths
   gvl_apps_home: "/mnt/gvl/apps"  
+  
+  # galaxy tool repos path
+  galaxy_indices_dir: /mnt/galaxyIndices/tool-data/dm/toolshed.g2.bx.psu.edu/repos/devteam
 
   #tool installation variables
 
@@ -38,4 +41,6 @@
   # A system path for Galaxy's main configuration file
   galaxy_config_file: "{{ galaxy_server_dir }}/config/galaxy.ini"
 
+  # Kraken databases config file destination
+  kraken_db_config_path: "{{ galaxy_indices_dir }}/kraken/b2392a9dfb01"
 ...
