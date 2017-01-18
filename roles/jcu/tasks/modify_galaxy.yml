@@ -104,6 +104,18 @@
     become_user: galaxy
     ignore_errors: true
     
+  #Copy the kraken_databases.loc file to /mnt/galaxyIndices/tool-data/dm/toolshed.g2.bx.psu.edu/repos
+  - name: Copy the kraken_databases.loc file to kraken repos diretory
+    copy: src="kraken_databases.loc" dest="{{ kraken_db_config_path }}/kraken_databases.loc" owner=galaxy group=users
+    become: yes
+    become_user: galaxy
+
+  #Copy the tool_data_table_conf.xml file to /mnt/galaxyIndices/tool-data/dm/toolshed.g2.bx.psu.edu/repos
+  - name: Copy the tool_data_table.conf.xml file to kraken repos diretory
+    copy: src="tool_data_table_conf.xml" dest="{{ kraken_db_config_path }}/tool_data_table_conf.xml" owner=galaxy group=users
+    become: yes
+    become_user: galaxy
+
   #Now de admin the irida user..
   #- name: De-admin the irida user
   #  replace: dest="{{ galaxy_config_file }}" regexp="{{ tools_admin_email}}[,]?" replace=""
