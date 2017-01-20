@@ -30,9 +30,10 @@ tools:
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
   revision: '01d94df2e32a'
 
-#- name: Pear
-#  tool_panel_section_id: "JCU"
-#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+- name: Pear
+  owner: iuc
+  tool_panel_section_id: "JCU"
+  tool_shed_url: http://toolshed.g2.bx.psu.edu/
 #  revision: '581e52f03c5d'
 
 - name: cdhit
@@ -51,6 +52,30 @@ tools:
   owner: devteam
   tool_panel_section_id: "otu_kraken"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
+  
+- name: kraken2tax
+  owner: devteam
+  tool_panel_section_id: "otu_kraken"
+  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+  #revision: 'd844fdcce44e'
+
+- name: kraken_filter
+  owner: devteam
+  tool_panel_section_id: "otu_kraken"
+  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: 'fe94f318048c'
+
+- name: kraken_report
+  owner: devteam
+  tool_panel_section_id: "otu_kraken"
+  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: '9ae975c30dde'
+
+#- name: kraken_translate
+#  owner: devteam
+#  tool_panel_section_id: "otu_kraken"
+#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: 'b9971bca4b01'
 
 #- name: mothur_toolsuite
 #  owner: jjohnson
