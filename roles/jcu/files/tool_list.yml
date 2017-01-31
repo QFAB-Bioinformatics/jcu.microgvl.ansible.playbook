@@ -24,15 +24,15 @@ tools:
 #  tool_shed_url: http://toolshed.g2.bx.psu.edu/
 #  revision: '42c899125802'
 
-- name: cutadapt
-  owner: lparsons
-  tool_panel_section_id: "otu_cutadapt"
-  tool_shed_url: http://toolshed.g2.bx.psu.edu/
-  revision: '01d94df2e32a'
+#- name: cutadapt
+#  owner: lparsons
+#  tool_panel_section_id: "otu_cutadapt"
+#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: '01d94df2e32a'
 
-- name: Pear
+- name: pear
   owner: iuc
-  tool_panel_section_id: "JCU"
+  tool_panel_section_id: "otu_pear"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
 #  revision: '581e52f03c5d'
 
@@ -77,11 +77,11 @@ tools:
 #  tool_shed_url: http://toolshed.g2.bx.psu.edu/
 #  revision: 'b9971bca4b01'
 
-#- name: mothur_toolsuite
-#  owner: jjohnson
-#  tool_panel_section_id: "otu_mothur"
-#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
-#  revision: '1be61ceb20d7'
+- name: mothur_toolsuite
+  owner: jjohnson
+  tool_panel_section_id: "otu_mothur"
+  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+  revision: '1be61ceb20d7'
 
 #- name: repeat_masker
 #  owner: bgruening
