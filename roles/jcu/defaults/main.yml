@@ -25,7 +25,8 @@
   galaxy_tools_api_key: ''
 
   # A user for the Galaxy bootstrap user
-  tools_admin_email: userjcu@local.localhost
+  #tools_admin_email: userjcu@local.localhost
+  tools_admin_email: userjcu@jcu.edu.au
   tools_admin_username: userjcu
   tools_admin_password: userjcu01
   
