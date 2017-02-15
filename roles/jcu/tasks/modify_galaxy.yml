@@ -28,13 +28,13 @@
     
   #Copy the multiple tool install_tools script over
   - name: Copy install_tool_shed_tools.py to galaxy_app
-    copy: src="install_tool_shed_tools.py" dest="{{ galaxy_server_dir }}/install_tool_shed_tools.py" owner="galaxy" group="galaxy"
+    copy: src="install_tool_shed_tools.py" dest="{{ galaxy_server_dir }}/install_tool_shed_tools.py" owner=galaxy group=users
     become: yes
     become_user: galaxy
     
   #Copy the tool list to galaxy_server_dir
   - name: Copy the tool list to galaxy_server_dir
-    copy: src="tool_list.yml" dest="{{ galaxy_server_dir }}/tool_list.yml" owner=galaxy group=galaxy
+    copy: src="tool_list.yml" dest="{{ galaxy_server_dir }}/tool_list.yml" owner=galaxy group=users
     become: yes
     become_user: galaxy
 
@@ -46,7 +46,22 @@
 
   #Copy the integrated_tool_panel.xml to galaxy_server_dir
   - name: Copy the tool list to galaxy_server_dir
-    copy: src="shed_tool_conf_cloud.xml" dest="{{ galaxy_server_dir }}/config/shed_tool_conf_cloud.xml" owner=galaxy group=galaxy
+    copy: src="shed_tool_conf_cloud.xml" dest="{{ galaxy_server_dir }}/config/shed_tool_conf_cloud.xml" owner=galaxy group=users
+    become: yes
+    become_user: galaxy
+    
+   #Create history directory if it doesn't exist
+  - name: Create history directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
+    file: path="{{ galaxy_server_dir }}/tools/history" state=directory owner=galaxy group=users mode=0755
+    become: yes
+    become_user: galaxy
+
+  #Copy historyRetrieval.py and historyRetrieval.xml to the /mnt/galaxy/galaxy-apps/tools/history
+  - name: Copy the histor to galaxy_server_dir
+    copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
+    with_items:
+      - { src: 'historyRetrieval.py', dest: '{{ galaxy_server_dir }}/tools/history/historyRetrieval.py' }
+      - { src: 'historyRetrieval.xml', dest: '{{ galaxy_server_dir }}/tools/history/historyRetrieval.xml' }
     become: yes
     become_user: galaxy
 
@@ -55,6 +70,8 @@
     with_items:
       - "<label id=\"jcu_tools\" text=\"James Cook Univeristy Tools\" />"
       - "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      - "<section id=\"tools\" name=\"Tools: History\">"
+      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
       - "<section id=\"otu_biom\" name=\"OTU: BIOM\">"
       - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
       - "<section id=\"otu_cdhit\" name=\"OTU: CDHIT\">"
@@ -115,6 +132,15 @@
   #Copy the tool_data_table_conf.xml file to /mnt/galaxyIndices/tool-data/dm/toolshed.g2.bx.psu.edu/repos
   - name: Copy the tool_data_table.conf.xml file to kraken repos diretory
     copy: src="tool_data_table_conf.xml" dest="{{ kraken_db_config_path }}/tool_data_table_conf.xml" owner=galaxy group=users
+    become: yes
+    become_user: galaxy
+
+  - name: modify shed_tool_conf_cloud.xml
+    lineinfile: dest="{{ galaxy_server_dir }}/config/tool_conf.xml" insertbefore="^</toolbox>" line="{{ item }}" state=present
+    with_items:
+      - "  <section id=\"tools\" name=\"Tools: History\">"
+      - "    <tool file=\"history/historyRetrieval.xml\" />"
+      - "  </section>\n"
     become: yes
     become_user: galaxy
 
