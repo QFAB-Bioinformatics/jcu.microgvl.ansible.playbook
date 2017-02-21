@@ -98,15 +98,6 @@
   #    - "</section>"
   #  become: yes
   #  become_user: galaxy
-  
-  - name: modify tool_conf.xml
-    lineinfile: dest="{{ galaxy_server_dir }}/config/tool_conf.xml" insertbefore="^</toolbox>" line="{{ item }}" state=present
-    with_items:
-      - "  <section id=\"tools\" name=\"Tools: History\">"
-      - "    <tool file=\"history/historyRetrieval.xml\" />"
-      - "  </section>\n"
-    become: yes
-    become_user: galaxy
     
   #restart Galaxy
   - name: stop Galaxy
@@ -144,6 +135,15 @@
     become: yes
     become_user: galaxy
 
+  - name: modify tool_conf.xml
+    lineinfile: dest="{{ galaxy_server_dir }}/config/tool_conf.xml" insertbefore="^</toolbox>" line="{{ item }}" state=present
+    with_items:
+      - "  <section id=\"tools\" name=\"Tools: History\">"
+      - "    <tool file=\"history/historyRetrieval.xml\" />"
+      - "  </section>\n"
+    become: yes
+    become_user: galaxy
+    
   #Now de admin the irida user..
   #- name: De-admin the irida user
   #  replace: dest="{{ galaxy_config_file }}" regexp="{{ tools_admin_email}}[,]?" replace=""
