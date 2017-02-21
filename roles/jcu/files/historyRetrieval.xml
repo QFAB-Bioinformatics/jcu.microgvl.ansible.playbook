@@ -1,11 +1,11 @@
-<tool id="history" name="Show input fastq filenames in history" force_history_refresh="True">
-  <description>of fastq filenames</description>
+<tool id="history" name="Get FASTQ filename" force_history_refresh="True">
+  <description>Retrive FASTQ filename</description>
   <command interpreter="python">historyRetrieval.py $input $output</command>
   <inputs>
     <param name="input" type="text" label="Current API Key" size="15"/>
   </inputs>
   <outputs>
-    <data format="tabular" name="output" label="Fastq files table"/>
+    <data format="tabular" name="output" label="FASTQ filename table"/>
   </outputs>
   <tests>
     <test>
@@ -15,7 +15,7 @@
   </tests>
 
   <help>
-    This tool shows the fastq filenames found in history.
+    This tool shows the FASTQ filenames found in history.
   </help>
 
 </tool>
