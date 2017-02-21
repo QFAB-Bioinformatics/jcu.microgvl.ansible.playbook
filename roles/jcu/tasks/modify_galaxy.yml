@@ -99,7 +99,7 @@
   #  become: yes
   #  become_user: galaxy
   
-  - name: modify shed_tool_conf_cloud.xml
+  - name: modify tool_conf.xml
     lineinfile: dest="{{ galaxy_server_dir }}/config/tool_conf.xml" insertbefore="^</toolbox>" line="{{ item }}" state=present
     with_items:
       - "  <section id=\"tools\" name=\"Tools: History\">"
