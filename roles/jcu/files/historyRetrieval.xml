@@ -1,5 +1,5 @@
 <tool id="history" name="Get FASTQ filename" force_history_refresh="True">
-  <description>Retrive FASTQ filename</description>
+  <description>Retrieve FASTQ filename</description>
   <command interpreter="python">historyRetrieval.py $input $output</command>
   <inputs>
     <param name="input" type="text" label="Current API Key" size="15"/>
