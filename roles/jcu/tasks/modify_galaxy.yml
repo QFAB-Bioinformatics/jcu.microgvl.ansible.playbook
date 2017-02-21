@@ -98,6 +98,15 @@
   #    - "</section>"
   #  become: yes
   #  become_user: galaxy
+  
+  - name: modify shed_tool_conf_cloud.xml
+    lineinfile: dest="{{ galaxy_server_dir }}/config/tool_conf.xml" insertbefore="^</toolbox>" line="{{ item }}" state=present
+    with_items:
+      - "  <section id=\"tools\" name=\"Tools: History\">"
+      - "    <tool file=\"history/historyRetrieval.xml\" />"
+      - "  </section>\n"
+    become: yes
+    become_user: galaxy
     
   #restart Galaxy
   - name: stop Galaxy
@@ -132,15 +141,6 @@
   #Copy the tool_data_table_conf.xml file to /mnt/galaxyIndices/tool-data/dm/toolshed.g2.bx.psu.edu/repos
   - name: Copy the tool_data_table.conf.xml file to kraken repos diretory
     copy: src="tool_data_table_conf.xml" dest="{{ kraken_db_config_path }}/tool_data_table_conf.xml" owner=galaxy group=users
-    become: yes
-    become_user: galaxy
-
-  - name: modify shed_tool_conf_cloud.xml
-    lineinfile: dest="{{ galaxy_server_dir }}/config/tool_conf.xml" insertbefore="^</toolbox>" line="{{ item }}" state=present
-    with_items:
-      - "  <section id=\"tools\" name=\"Tools: History\">"
-      - "    <tool file=\"history/historyRetrieval.xml\" />"
-      - "  </section>\n"
     become: yes
     become_user: galaxy
 
