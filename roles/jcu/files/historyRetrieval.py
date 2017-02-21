@@ -29,7 +29,7 @@ gi = galaxy.GalaxyInstance(url='http://127.0.0.1:8080', key=API_KEY)
 # b) the output will be directly showed in galaxy history without upload file feature
 #
 #############
-inputfile=sys.argv[1]
+inputfile=sys.argv[2]
 uploadfile=open(inputfile,"w")
 
 
@@ -78,10 +78,10 @@ for item in range(len(gi_histories)):
                 filename_no_suffix=makesubs(history[i]['name'])
                 line.append(history[i]['name'])                
                 line.append(filename_no_suffix)
-                line.append(history[i]['dataset_id'])
-                line.append(history[i]['id'])
-                line.append(history[i]['history_id'])
-                line.append(dataset_client)
+                #line.append(history[i]['dataset_id'])
+                #line.append(history[i]['id'])
+                #line.append(history[i]['history_id'])
+                #line.append(dataset_client)
                 uploadfile.write("\t".join(line))
                 uploadfile.write("\n")
                 line=[]
