@@ -17,7 +17,17 @@ tools:
   tool_panel_section_id: "otu_biom"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
   revision: '367b1ed91207'
-
+ 
+- name: biom_convert
+  owner: iuc
+  tool_panel_section_id: "otu_biom"
+  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+  
+- name: package_swarm_2_1_5
+  owner: iuc
+  tool_panel_section_id: "otu_swarm"
+  tool_shed_url: http://testtoolshed.g2.bx.psu.edu/
+  
 #- name: krona
 #  owner: ondovb
 #  tool_panel_section_id: "JCU"
