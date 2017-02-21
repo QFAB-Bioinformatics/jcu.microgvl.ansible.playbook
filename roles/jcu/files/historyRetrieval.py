@@ -64,7 +64,7 @@ def remove_duplicates(values):
             seen.add(value)
     return output
 
-header=['History Name','Filename','Dataset_id','id' ,'history_id','filename\n']
+header=['History Name','Filename\n']
 uploadfile.write("\t".join(header))
 for item in range(len(gi_histories)):
     historyId=gi_histories[item]['id']
@@ -74,14 +74,10 @@ for item in range(len(gi_histories)):
             dataset_client= gi.histories.show_dataset(historyId,history[i]['id'])['file_name']
             filename=history[i]['name']
             if filename.endswith(filename_suffix):
-                #filename_array.append(makesubs(history[i]['name']))
+
                 filename_no_suffix=makesubs(history[i]['name'])
                 line.append(history[i]['name'])                
                 line.append(filename_no_suffix)
-                #line.append(history[i]['dataset_id'])
-                #line.append(history[i]['id'])
-                #line.append(history[i]['history_id'])
-                #line.append(dataset_client)
                 uploadfile.write("\t".join(line))
                 uploadfile.write("\n")
                 line=[]
