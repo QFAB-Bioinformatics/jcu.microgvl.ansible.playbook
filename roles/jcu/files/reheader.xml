@@ -1,0 +1,22 @@
+<tool id="rename" name="reheader" force_history_refresh="True">
+  <description>Rename sequence header in FASTQ file</description>
+  <command interpreter="python">reheader.py $inputfile.display_name $inputfile $output</command>
+  <inputs>
+    <param format="fastq,fastq.gz,fastq.bz2,bam,sam" name="inputfile" type="data" label="Short read data from your current history" />
+  </inputs>
+  <outputs>
+    <!--<data name="output" format="fastq" label="${tool.name} on ${on_string}:FASTQ"/>-->
+   -<data name="output" format="fastq" label="reheader_${inputfile.display_name}"/>
+  </outputs>
+  <tests>
+    <test>
+      <param name="test_input" value="test_input.txt"/>
+      <output name="test_outout" file="test_output.txt"/>
+    </test>
+  </tests>
+
+  <help>
+    This tool is used rename the sequence header in FASTQ file
+  </help>
+
+</tool>
