@@ -63,6 +63,21 @@
       - { src: 'historyRetrieval.py', dest: '{{ galaxy_server_dir }}/tools/history/historyRetrieval.py' }
       - { src: 'historyRetrieval.xml', dest: '{{ galaxy_server_dir }}/tools/history/historyRetrieval.xml' }
     become: yes
+    become_user: galaxy.
+  
+  #Create Reheader directory if it doesn't exist
+  - name: Create Reheader directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
+    file: path="{{ galaxy_server_dir }}/tools/reheader" state=directory owner=galaxy group=users mode=0755
+    become: yes
+    become_user: galaxy
+
+  #Copy reheader.py and reheader.xml to the /mnt/galaxy/galaxy-apps/tools/reheader
+  - name: Copy reheader script to galaxy_server_dir
+    copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
+    with_items:
+      - { src: 'reheader.py', dest: '{{ galaxy_server_dir }}/tools/reheader/reheader.py' }
+      - { src: 'reheader.xml', dest: '{{ galaxy_server_dir }}/tools/reheader/reheader.xml' }
+    become: yes
     become_user: galaxy
 
   - name: modify shed_tool_conf_cloud.xml
@@ -71,6 +86,8 @@
       - "<label id=\"jcu_tools\" text=\"James Cook Univeristy Tools\" />"
       - "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
       - "<section id=\"tools\" name=\"Tools: History\">"
+      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      - "<section id=\"tools\" name=\"Tools: Reheader\">"
       - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
       - "<section id=\"otu_biom\" name=\"META: BIOM\">"
       - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
