@@ -6,8 +6,10 @@
   gvl_apps_home: "/mnt/gvl/apps"  
   
   # galaxy tool repos path
-  galaxy_indices_dir: /mnt/galaxyIndices/tool-data/dm/toolshed.g2.bx.psu.edu/repos/devteam
+  galaxy_indices_dir: /mnt/galaxyIndices/tool-data/dm/toolshed.g2.bx.psu.edu/repos
 
+  # galaxy tool shed path
+  galaxy_tools_shed_dir: /mnt/galaxy/shed_tools/toolshed.g2.bx.psu.edu/repos
   #tool installation variables
 
   galaxy_tools_galaxy_instance_url: "http://localhost/galaxy/"
@@ -32,7 +34,10 @@
   
   galaxy_server_dir: /mnt/galaxy/galaxy-app
 
-
+  # require to create symlink creation
+  galaxy_server_bam_to_fastq_dir: "{{ galaxy_tools_shed_dir }}/brad-chapman/bam_to_fastq/5a9ada9a3191/bam_to_fastq/bam_to_fastq"
+  galaxy_server_tools_picard_dir: /mnt/galaxy/tools/picard/1.56.0/devteam/package_picard_1_56_0/99a28567c3a3/jars
+  
   ### this variable is not part of the original irida ansible playbook
   galaxy_server_var: /mnt/galaxy/var
 
@@ -43,5 +48,7 @@
   galaxy_config_file: "{{ galaxy_server_dir }}/config/galaxy.ini"
 
   # Kraken databases config file destination
-  kraken_db_config_path: "{{ galaxy_indices_dir }}/kraken/b2392a9dfb01"
+  kraken_db_config_path: "{{ galaxy_indices_dir }}/devteam/kraken/b2392a9dfb01"
+  kraken_db_for_tax_path: "{{ galaxy_indices_dir }}/devteam/kraken2tax/d844fdcce44e"
+  kraken_mpa_report_path: "{{ galaxy_tool_shed_dir }}/devteam/kraken_report/9ae975c30dde"
 ...
