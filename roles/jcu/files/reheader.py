@@ -1,6 +1,6 @@
 #!/usr/bin/python 
 import sys
-from Bio.Seq import Seq
+#from Bio.Seq import Seq
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from os.path import basename
