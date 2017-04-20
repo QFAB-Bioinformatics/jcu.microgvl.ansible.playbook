@@ -23,40 +23,11 @@ tools:
   tool_panel_section_id: "otu_biom"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
   
-- name: package_swarm_2_1_5
-  owner: iuc
-  tool_panel_section_id: "otu_swarm"
-  tool_shed_url: http://testtoolshed.g2.bx.psu.edu/
-  
-#- name: krona
-#  owner: ondovb
-#  tool_panel_section_id: "JCU"
-#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
-#  revision: '42c899125802'
-
-#- name: cutadapt
-#  owner: lparsons
-#  tool_panel_section_id: "otu_cutadapt"
-#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
-#  revision: '01d94df2e32a'
-
 - name: pear
   owner: iuc
   tool_panel_section_id: "otu_pear"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
 #  revision: '581e52f03c5d'
-
-#- name: cdhit
-#  owner: jjohnson
-#  tool_panel_section_id: "otu_cdhit"
-#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
-#  revision: '28b7a43907f0'
-
-#- name: metaphlan
-#  owner: dannon
-#  tool_panel_section_id: "otu_metaphlan"
-#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
-#  revision: 'e951f9d38339'
 
 - name: kraken
   owner: devteam
@@ -81,11 +52,11 @@ tools:
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
 #  revision: '9ae975c30dde'
 
-#- name: kraken_translate
-#  owner: devteam
-#  tool_panel_section_id: "otu_kraken"
-#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
-#  revision: 'b9971bca4b01'
+- name: kraken_translate
+  owner: devteam
+  tool_panel_section_id: "otu_kraken"
+  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+  revision: 'b9971bca4b01'
 
 - name: kraken_taxonomy_report
   owner: devteam
@@ -98,6 +69,43 @@ tools:
   tool_panel_section_id: "otu_mothur"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
   revision: '1be61ceb20d7'
+
+- name: split_file
+  owner: bgruening
+  tool_panel_section_id: "tools"
+  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: 'b60f2452580e'
+
+####### tool list end ############
+
+#- name: package_swarm_2_1_5
+#  owner: iuc
+#  tool_panel_section_id: "otu_swarm"
+#  tool_shed_url: http://testtoolshed.g2.bx.psu.edu/
+  
+#- name: krona
+#  owner: ondovb
+#  tool_panel_section_id: "JCU"
+#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: '42c899125802'
+
+#- name: cutadapt
+#  owner: lparsons
+#  tool_panel_section_id: "otu_cutadapt"
+#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: '01d94df2e32a'
+
+#- name: cdhit
+#  owner: jjohnson
+#  tool_panel_section_id: "otu_cdhit"
+#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: '28b7a43907f0'
+
+#- name: metaphlan
+#  owner: dannon
+#  tool_panel_section_id: "otu_metaphlan"
+#  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: 'e951f9d38339'
 
 #- name: repeat_masker
 #  owner: bgruening
