@@ -17,19 +17,6 @@ option_specification = matrix(c(
 
 options <- getopt(option_specification);
 
-#if(!is.null(options$outdir)){
-	
-
-#print(options$biomfile)
-#print(options$metafile)
-#print(options$outdir)
-#print(options$htmlfile)
-
-# Create some simple test data
-#x = seq(0,10,1);
-#y = x * 10;
- 
-
 if (!is.null(options$outdir)) {
   # Create the directory
   dir.create(options$outdir,FALSE)
@@ -53,7 +40,6 @@ pngfile_first <- gsub("[ ]+", "", paste(options$outdir,"/first.png"))
 pngfile_second <- gsub("[ ]+", "", paste(options$outdir,"/second.png"))
 pngfile_third <- gsub("[ ]+", "", paste(options$outdir,"/third.png"))
 pngfile_fourth <- gsub("[ ]+", "", paste(options$outdir,"/fourth.png"))
-#pngfile <- gsub("[ ]+", "", paste(options$outdir,"/pngfile.png"))
 htmlfile <- gsub("[ ]+", "", paste(options$htmlfile))
 
 
@@ -89,18 +75,6 @@ bitmap(pngfile_fourth,"png16m")
 plot_bar(AIP_galaxy,fill="Expected_Healthy",x=selectedColumn,facet_grid = ~Phylum)
 garbage<-dev.off()
 
-
-# Produce PDF file
-#pdf(pdffile);
-#plot(x, y);
-#dev.off();
- 
-
-# Produce PNG file
-#png(pngfile);
-#bitmap(pngfile,"png16m")
-#plot(x, y);
-#dev.off();
 
 # Produce the HTML file
 htmlfile_handle <- file(htmlfile)
