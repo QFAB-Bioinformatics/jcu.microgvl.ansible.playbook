@@ -11,7 +11,7 @@
   </inputs>
  
   <outputs>
-        <data format="html" name="htmlfile" label="${biom_input}.html"/>
+        <data format="html" name="htmlfile" label="${tool.name}.html"/>
   </outputs>
  
   <help>
