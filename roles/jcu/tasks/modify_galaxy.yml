@@ -85,6 +85,37 @@
       - { src: 'reheader.xml', dest: '{{ galaxy_server_dir }}/tools/reheader/reheader.xml' }
     become: yes
     become_user: galaxy
+       
+  #Create Reheader directory if it doesn't exist
+  - name: Create uc2otutab directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
+    file: path="{{ galaxy_server_dir }}/tools/uc2otutable" state=directory owner=galaxy group=users mode=0755
+    become: yes
+    become_user: galaxy
+
+  #Copy reheader.py and reheader.xml to the /mnt/galaxy/galaxy-apps/tools/reheader
+  - name: Copy uc2otutab script to galaxy_server_dir
+    copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
+    with_items:
+      - { src: 'uc2otutab_mod.py', dest: '{{ galaxy_server_dir }}/tools/uc2otutable/uc2otutab_mod.py' }
+      - { src: 'uc2otutab_mod.xml', dest: '{{ galaxy_server_dir }}/tools/uc2otutable/uc2otutab_mod.xml' }
+    become: yes
+    become_user: galaxy
+    
+   #Create Reheader directory if it doesn't exist
+  - name: Create Phyloseq directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
+    file: path="{{ galaxy_server_dir }}/tools/phyloseq" state=directory owner=galaxy group=users mode=0755
+    become: yes
+    become_user: galaxy
+
+  #Copy reheader.py and reheader.xml to the /mnt/galaxy/galaxy-apps/tools/reheader
+  - name: Copy Phyloseq script to galaxy_server_dir
+    copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
+    with_items:
+      - { src: 'phyloseq.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.r' }
+      - { src: 'phyloseq.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.xml' }
+    become: yes
+    become_user: galaxy   
+ 
 
   - name: modify shed_tool_conf_cloud.xml
     lineinfile: dest="{{ galaxy_server_dir }}/config/shed_tool_conf_cloud.xml" insertbefore="^<section id=\"getext\" name=\"Get Data\" version=\"\">" line="{{ item }}" state=present
@@ -94,6 +125,10 @@
 #      - "<section id=\"tools\" name=\"Tools: History\">"
 #      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
       - "<section id=\"tools\" name=\"Tools: Reheader\">"
+      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      - "<section id=\"tools\" name=\"Tools: UCLUST conversion\">"
+      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      - "<section id=\"tools\" name=\"Tools: Phyloseq\">"
       - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
       - "<section id=\"otu_biom\" name=\"META: BIOM\">"
       - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
@@ -178,6 +213,12 @@
     with_items:
       - "  <section id=\"tools\" name=\"Tools: Reheader\">"
       - "    <tool file=\"reheader/reheader.xml\" />"
+      - "  </section>\n"
+      - "  <section id=\"tools\" name=\"Tools: UCLUST Conversion\">"
+      - "    <tool file=\"uc2otutable/uc2otutable_mod.xml\" />"
+      - "  </section>\n"
+      - "  <section id=\"tools\" name=\"Tools: Phyloseq\">"
+      - "    <tool file=\"phyloseq/phyloseq.xml\" />"
       - "  </section>\n"
     become: yes
     become_user: galaxy
