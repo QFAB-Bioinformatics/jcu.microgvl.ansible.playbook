@@ -1,0 +1,22 @@
+<tool id="phyloseq" name="Phyloseq" version="1.0" hidden="false">
+  <description>Phyloseq</description>
+  <command interpreter="Rscript">
+    phyloseq.r --biomfile=$biom_input --metafile=$metadata_input --column="${factor_column}" --outdir="$htmlfile.files_path" --htmlfile=$htmlfile
+  </command>
+ 
+  <inputs>
+    <param format="biom1" name="biom_input" type="data" label="BIOM file"/>
+    <param format="tabular" name="metadata_input" type="data" label="Metadata file"/>
+    <param name="factor_column" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="factor"/>
+  </inputs>
+ 
+  <outputs>
+        <data format="html" name="htmlfile" label="${biom_input}.html"/>
+  </outputs>
+ 
+  <help>
+    **What it does**
+    Take both BIOM and metadata file as input and generate plots using phyloseq
+    
+  </help>
+</tool>
