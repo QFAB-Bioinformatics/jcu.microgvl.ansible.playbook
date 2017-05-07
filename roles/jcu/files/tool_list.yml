@@ -76,6 +76,12 @@ tools:
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
 #  revision: 'b60f2452580e'
 
+- name: unique_line
+  owner: xuebing
+  tool_panel_section_id: "tools"
+  tool_shed_url: http://toolshed.g2.bx.psu.edu/
+#  revision: 'a43de04b5a62'
+
 ####### tool list end ############
 
 #- name: package_swarm_2_1_5
