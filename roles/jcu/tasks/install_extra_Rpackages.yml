@@ -9,6 +9,7 @@
     changed_when: "'Added' in r_result.stdout"
     with_items:
       - ape
+      - getopt
     become: yes
     become_user: root
 
