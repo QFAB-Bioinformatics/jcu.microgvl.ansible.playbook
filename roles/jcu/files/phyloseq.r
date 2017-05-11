@@ -9,7 +9,7 @@ Sys.setenv("DISPLAY"=":1")
 option_specification = matrix(c(
    'biomfile','b',2,'character',
    'metafile','m',2,'character',
-     'column','f',2,'character',
+     'column','f',2,'numeric',
      'outdir','o',2,'character',
    'htmlfile','h',2,'character'
 ),byrow=TRUE,ncol=4);
@@ -28,7 +28,7 @@ galaxy_map <- import_qiime_sample_data(options$metafile)
 tax_col_galaxy <- c("Kingdom","Phylum","Class","Order","Family","Genus","Species")
 AIP_galaxy <- merge_phyloseq(galaxy_biom,galaxy_map)
 
-selectedColumn<-options$column
+selectedColumn<-colnames(galaxy_map)[options$column]
 
 colnames(tax_table(AIP_galaxy)) <- tax_col_galaxy
 
@@ -45,10 +45,10 @@ htmlfile <- gsub("[ ]+", "", paste(options$htmlfile))
 
 # Produce PDF file
 pdf(pdffile);
-plot_richness(AIP_galaxy,measures=c("Observed"),color="Protein",x="Trio")
-plot_bar(AIP_galaxy,x="Trio",facet_grid = ~Protein+Allergen,fill="Expected_Healthy")
-plot_bar(AIP_galaxy,x="Trio",facet_grid = ~Phylum, fill="Protein")
-plot_bar(AIP_galaxy,fill="Expected_Healthy",x="Trio",facet_grid = ~Phylum)
+plot_richness(AIP_galaxy,measures=c("Observed"),color="Protein",x=selectedColumn)
+plot_bar(AIP_galaxy,x=selectedColumn,facet_grid = ~Protein+Allergen,fill="Expected_Healthy")
+plot_bar(AIP_galaxy,x=selectedColumn,facet_grid = ~Phylum, fill="Protein")
+plot_bar(AIP_galaxy,fill="Expected_Healthy",x=selectedColumn,facet_grid = ~Phylum)
 garbage<-dev.off();
 
 #png('first.png')
