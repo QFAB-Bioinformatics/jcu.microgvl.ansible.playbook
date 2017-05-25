@@ -1,0 +1,45 @@
+<tool id="validate" name="validateMeta" force_history_refresh="True">
+  <description>Rename sequence header in FASTQ file</description>
+  <command interpreter="python"><![CDATA[
+     #set $Output = ""
+     #silent sys.stderr.write($Output + "\n")
+     #for $i, $filename_input in enumerate($input):
+         #set $Output += $filename_input.name +","
+     #end for
+     #set $Output = $Output[:-1]
+     #silent sys.stderr.write($Output)
+
+     #if str($header_condition.header_bool) == "true"
+         validateMeta.py $Output $metadata_input "true" $outlog_matched $outlog_unmatched
+     #else
+         validateMeta.py $Output $metadata_input "" $outlog_matched $outlog_unmatched
+     #end if
+  ]]></command>
+
+
+  <inputs>
+    <param format="txt" name="input" type="data_collection" label="select output log file"/>
+    <param format="tabular" name="metadata_input" type="data" label="Metadata file" multiple="False"/>
+
+    <conditional name="header_condition">
+      <param name="header_bool" type="boolean" truevalue="true" falsevalue="false" checked="False" label="Header in the metadata file"/>
+    </conditional>
+
+
+  </inputs>
+  <outputs>
+    <data name="outlog_matched" format="tabular" label="${tool.name}_matched.log"/>
+    <data name="outlog_unmatched" format="tabular" label="${tool.name}_unmatched.log"/>
+  </outputs>
+  <tests>
+    <test>
+      <param name="test_input" value="test_input.txt"/>
+      <output name="test_outout" file="test_output.txt"/>
+    </test>
+  </tests>
+
+  <help>
+    This tool is used to combine the content of a list of input text files from data collection.
+  </help>
+
+</tool>
