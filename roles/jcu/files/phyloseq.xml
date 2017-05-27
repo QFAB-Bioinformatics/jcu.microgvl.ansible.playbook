@@ -1,5 +1,5 @@
-<tool id="phyloseq" name="Phyloseq" version="1.0" hidden="false">
-  <description>Phyloseq</description>
+<tool id="phyloseq_all" name="Phyloseq Plots" version="1.0" hidden="false">
+  <description>Phyloseq Summary Plot</description>
   <command interpreter="Rscript">
     phyloseq.r --biomfile=$biom_input --metafile=$metadata_input --column="${factor_column}" --outdir="$htmlfile.files_path" --htmlfile=$htmlfile
   </command>

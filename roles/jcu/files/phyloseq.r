@@ -16,6 +16,19 @@ option_specification = matrix(c(
 
 
 options <- getopt(option_specification);
+options(bitmapType="cairo")
+#if(!is.null(options$outdir)){
+	
+
+#print(options$biomfile)
+#print(options$metafile)
+#print(options$outdir)
+#print(options$htmlfile)
+
+# Create some simple test data
+#x = seq(0,10,1);
+#y = x * 10;
+ 
 
 if (!is.null(options$outdir)) {
   # Create the directory
@@ -25,14 +38,20 @@ if (!is.null(options$outdir)) {
 
 galaxy_biom <- import_biom(options$biomfile)
 galaxy_map <- import_qiime_sample_data(options$metafile)
-tax_col_galaxy <- c("Kingdom","Phylum","Class","Order","Family","Genus","Species")
+tax_col_norm <- c("Kingdom","Phylum","Class","Order","Family","Genus","Species")
+tax_col_extra <- c("None","Kingdom","Phylum","Class","Order","Family","Genus","Species")
+
+number.of.tax.rank<-length(colnames(tax_table(galaxy_biom)))
+
+if( number.of.tax.rank == 7){
+colnames(tax_table(galaxy_biom)) <- tax_col_norm
+}else{
+colnames(tax_table(galaxy_biom)) <- tax_col_extra
+}
+
 AIP_galaxy <- merge_phyloseq(galaxy_biom,galaxy_map)
 
 selectedColumn<-colnames(galaxy_map)[options$column]
-
-colnames(tax_table(AIP_galaxy)) <- tax_col_galaxy
-
-#pngfile_array=c('first.png','second.png','third.png','fourth.png)
 
 
 pdffile <- gsub("[ ]+", "", paste(options$outdir,"/pdffile.pdf"))
@@ -40,6 +59,8 @@ pngfile_first <- gsub("[ ]+", "", paste(options$outdir,"/first.png"))
 pngfile_second <- gsub("[ ]+", "", paste(options$outdir,"/second.png"))
 pngfile_third <- gsub("[ ]+", "", paste(options$outdir,"/third.png"))
 pngfile_fourth <- gsub("[ ]+", "", paste(options$outdir,"/fourth.png"))
+#pngfile_fifth <- gsub("[ ]+", "", paste(options$outdir,"/fifth.png"))
+#pngfile <- gsub("[ ]+", "", paste(options$outdir,"/pngfile.png"))
 htmlfile <- gsub("[ ]+", "", paste(options$htmlfile))
 
 
@@ -74,6 +95,12 @@ bitmap(pngfile_fourth,"png16m")
 #plot_bar(AIP_galaxy,fill="Expected_Healthy",x="Trio",facet_grid = ~Phylum)
 plot_bar(AIP_galaxy,fill="Expected_Healthy",x=selectedColumn,facet_grid = ~Phylum)
 garbage<-dev.off()
+
+
+#png('fifth.png')
+#bitmap(pngfile_fifth,"png16m")
+#plot_net(AIP_galaxy,point_label = selectedColumn, color = "Protein")
+#garbage<-dev.off()
 
 
 # Produce the HTML file
