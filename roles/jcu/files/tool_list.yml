@@ -59,7 +59,7 @@ tools:
   revision: 'b9971bca4b01'
 
 - name: kraken_taxonomy_report
-  owner: devteam
+  owner: iuc
   tool_panel_section_id: "meta_kraken"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
   revision: 'b97694b21bc3'
