@@ -1,0 +1,43 @@
+<tool id="phyloseq_abundance" name="Phyloseq Abundance plot" version="1.0" hidden="false">
+  <description>Phyloseq Abundance Plot with the factors of choice</description>
+  <command interpreter="Rscript"><![CDATA[
+    #if str($factor.type) == "one":
+    phyloseq_abundance_factor.r --biomfile=$biom_input --metafile=$metadata_input --xcolumn="${xaxis_column}" --lcolumn="${legend_column}" --factor1="${factor.factor_column1}" --outdir="$htmlfile.files_path" --htmlfile=$htmlfile
+    #else if str($factor.type) =="two":
+    phyloseq_abundance_factor.r --biomfile=$biom_input --metafile=$metadata_input --xcolumn="${xaxis_column}" --lcolumn="${legend_column}" --factor1="${factor.factor_column1}" --factor2="${factor.factor_column2}" --outdir="$htmlfile.files_path" --htmlfile=$htmlfile
+    #end if
+ ]]> </command>
+
+ 
+  <inputs>
+
+    <param format="biom1" name="biom_input" type="data" label="BIOM file"/>
+    <param format="tabular" name="metadata_input" type="data" label="Metadata file"/>
+    <param name="xaxis_column" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="Column used for X-axis"/>
+    <param name="legend_column" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="Column used as legend"/>
+    <conditional name="factor">
+      <param name="type" type="select" label="Is this one factor or two factor">
+              <option value="one">1</option>
+              <option value="two">2</option>
+      </param>
+      <when value="one">
+	<param name="factor_column1" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="Column used as factor 1"/>
+      </when>
+      <when value="two">
+	<param name="factor_column1" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="Column used as factor 1"/>
+	<param name="factor_column2" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="Column used as factor 2"/>
+      </when>
+    </conditional>
+
+  </inputs>
+ 
+  <outputs>
+        <data format="html" name="htmlfile" label="${tool.name}.html"/>
+  </outputs>
+ 
+  <help>
+    **What it does**
+    Take both BIOM and metadata file as input and generate plots using phyloseq
+    
+  </help>
+</tool>
