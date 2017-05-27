@@ -87,14 +87,14 @@
   - name: Copy phyloseq script to galaxy_server_dir
     copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
     with_items:
-      - { src: 'phyloseq.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.py' }
+      - { src: 'phyloseq.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.r' }
       - { src: 'phyloseq.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.xml' }
-      - { src: 'phyloseq_richness.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.py' }
-      - { src: 'phyloseq_richness.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.xml' }
-      - { src: 'phyloseq_abundance_factor.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.py' }
-      - { src: 'phyloseq_abundance_factor.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.xml' }
-      - { src: 'phyloseq_abundance_kingdom.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.py' }
-      - { src: 'phyloseq_abundance_kingdom.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.xml' }
+      - { src: 'phyloseq_richness.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_richness.r' }
+      - { src: 'phyloseq_richness.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_richness.xml' }
+      - { src: 'phyloseq_abundance_factor.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_abundance_factor.r' }
+      - { src: 'phyloseq_abundance_factor.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_abundance_factor.xml' }
+      - { src: 'phyloseq_abundance_kingdom.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_abundance_kingdom.r' }
+      - { src: 'phyloseq_abundance_kingdom.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_abundance_kingdom.xml' }
     become: yes
     become_user: galaxy
 
