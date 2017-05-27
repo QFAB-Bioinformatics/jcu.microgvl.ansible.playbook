@@ -49,28 +49,55 @@
     copy: src="shed_tool_conf_cloud.xml" dest="{{ galaxy_server_dir }}/config/shed_tool_conf_cloud.xml" owner=galaxy group=users
     become: yes
     become_user: galaxy
+	
+  - name: Install biom-format using pip
+    pip: name=biom-format version=2.1.5 state=present
+    become: yes
+    become_user: root
     
   #Create a symlink for SamToFastq.jar in bam_to_fastq directory
   - name: Create a symlink for SamToFastq.jar
     file: src="{{ galaxy_server_tools_picard_dir }}/SamToFastq.jar" dest="{{ galaxy_server_bam_to_fastq_dir }}/SamToFastq.jar" state=link owner=galaxy group=users mode=0755
     become: yes
     become_user: galaxy
-    
+
   #Create history directory if it doesn't exist
-#  - name: Create history directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
-#    file: path="{{ galaxy_server_dir }}/tools/history" state=directory owner=galaxy group=users mode=0755
-#    become: yes
-#    become_user: galaxy
+  #- name: Create history directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
+  #  file: path="{{ galaxy_server_dir }}/tools/history" state=directory owner=galaxy group=users mode=0755
+  #  become: yes
+  # become_user: galaxy
 
   #Copy historyRetrieval.py and historyRetrieval.xml to the /mnt/galaxy/galaxy-apps/tools/history
-#  - name: Copy the histor to galaxy_server_dir
-#    copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
-#    with_items:
-#      - { src: 'historyRetrieval.py', dest: '{{ galaxy_server_dir }}/tools/history/historyRetrieval.py' }
-#      - { src: 'historyRetrieval.xml', dest: '{{ galaxy_server_dir }}/tools/history/historyRetrieval.xml' }
-#    become: yes
-#    become_user: galaxy.
-  
+  #- name: Copy history script to galaxy_server_dir
+  #  copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
+  #  with_items:
+  #    - { src: 'historyRetrieval.py', dest: '{{ galaxy_server_dir }}/tools/history/historyRetrieval.py' }
+  #    - { src: 'historyRetrieval.xml', dest: '{{ galaxy_server_dir }}/tools/history/historyRetrieval.xml' }
+  #  become: yes
+  #  become_user: galaxy
+
+
+  #Create Phyloseq directory if it doesn't exist
+  - name: Create Phyloseq directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
+    file: path="{{ galaxy_server_dir }}/tools/phyloseq" state=directory owner=galaxy group=users mode=0755
+    become: yes
+    become_user: galaxy
+
+  #Copy phyloseq.r and phyloseq.xml to the /mnt/galaxy/galaxy-apps/tools/phyloseq
+  - name: Copy phyloseq script to galaxy_server_dir
+    copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
+    with_items:
+      - { src: 'phyloseq.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.py' }
+      - { src: 'phyloseq.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.xml' }
+      - { src: 'phyloseq_richness.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.py' }
+      - { src: 'phyloseq_richness.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.xml' }
+      - { src: 'phyloseq_abundance_factor.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.py' }
+      - { src: 'phyloseq_abundance_factor.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.xml' }
+      - { src: 'phyloseq_abundance_kingdom.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.py' }
+      - { src: 'phyloseq_abundance_kingdom.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.xml' }
+    become: yes
+    become_user: galaxy
+
   #Create Reheader directory if it doesn't exist
   - name: Create Reheader directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
     file: path="{{ galaxy_server_dir }}/tools/reheader" state=directory owner=galaxy group=users mode=0755
@@ -85,64 +112,72 @@
       - { src: 'reheader.xml', dest: '{{ galaxy_server_dir }}/tools/reheader/reheader.xml' }
     become: yes
     become_user: galaxy
-       
-  #Create Reheader directory if it doesn't exist
-  - name: Create uc2otutab directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
+
+  #Create validate metadata directory if it doesn't exist
+  - name: Create validate metadata directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
+    file: path="{{ galaxy_server_dir }}/tools/validateMeta" state=directory owner=galaxy group=users mode=0755
+    become: yes
+    become_user: galaxy
+
+  #Copy validateMeta.py and validateMeta.xml to the /mnt/galaxy/galaxy-apps/tools/validateMeta
+  - name: Copy validateMeta script to galaxy_server_dir
+    copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
+    with_items:
+      - { src: 'validateMeta.py', dest: '{{ galaxy_server_dir }}/tools/validateMeta/validateMeta.py' }
+      - { src: 'validateMeta.xml', dest: '{{ galaxy_server_dir }}/tools/validateMeta/validateMeta.xml' }
+    become: yes
+    become_user: galaxy
+
+  #Create UCLUST to OTU Table directory if it doesn't exist
+  - name: Create UCLUST to OTU Table directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
     file: path="{{ galaxy_server_dir }}/tools/uc2otutable" state=directory owner=galaxy group=users mode=0755
     become: yes
     become_user: galaxy
 
-  #Copy reheader.py and reheader.xml to the /mnt/galaxy/galaxy-apps/tools/reheader
-  - name: Copy uc2otutab script to galaxy_server_dir
+  #Copy uc2otutable.py and uc2otutable.xml to the /mnt/galaxy/galaxy-apps/tools/uc2otutable
+  - name: Copy validateMeta script to galaxy_server_dir
     copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
     with_items:
-      - { src: 'uc2otutab_mod.py', dest: '{{ galaxy_server_dir }}/tools/uc2otutable/uc2otutab_mod.py' }
-      - { src: 'uc2otutab_mod.xml', dest: '{{ galaxy_server_dir }}/tools/uc2otutable/uc2otutab_mod.xml' }
+      - { src: 'uc2otutable_mod.py', dest: '{{ galaxy_server_dir }}/tools/uc2otutable/uc2otutable_mod.py' }
+      - { src: 'uc2otutable_mod.xml', dest: '{{ galaxy_server_dir }}/tools/uc2otutable/uc2otutable_mod.xml' }
+      - { src: 'python_scripts.tar.gz', dest: '{{ galaxy_server_dir }}/tools/uc2otutable/python_scripts.tar.gz' }
     become: yes
     become_user: galaxy
     
-   #Create Reheader directory if it doesn't exist
-  - name: Create Phyloseq directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
-    file: path="{{ galaxy_server_dir }}/tools/phyloseq" state=directory owner=galaxy group=users mode=0755
-    become: yes
+  # unarchive a file that is in the machine
+  - name: Extract archive
+    unarchive: src="{{ galaxy_server_dir }}/tools/uc2otutable/python_scripts.tar.gz" dest="{{ galaxy_server_dir }}/uc2otutable/" owner=galaxy group=users mode=0755
+    becomes: yse
     become_user: galaxy
-
-  #Copy reheader.py and reheader.xml to the /mnt/galaxy/galaxy-apps/tools/reheader
-  - name: Copy Phyloseq script to galaxy_server_dir
-    copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
-    with_items:
-      - { src: 'phyloseq.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.r' }
-      - { src: 'phyloseq.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq.xml' }
-    become: yes
-    become_user: galaxy   
- 
 
   - name: modify shed_tool_conf_cloud.xml
     lineinfile: dest="{{ galaxy_server_dir }}/config/shed_tool_conf_cloud.xml" insertbefore="^<section id=\"getext\" name=\"Get Data\" version=\"\">" line="{{ item }}" state=present
     with_items:
       - "<label id=\"jcu_tools\" text=\"James Cook Univeristy Tools\" />"
       - "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-#      - "<section id=\"tools\" name=\"Tools: History\">"
+      - "<section id=\"tools\" name=\"Tools: Data Processing\">"
+      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      - "<section id=\"tools\" name=\"Tools: OTUTable\">"
+      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      - "<section id=\"tools\" name=\"Tools: Rename Sequence Header\">"
+      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      - "<section id=\"tools\" name=\"Tools: ValidateMeta\">"
+      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      - "<section id=\"meta_biom\" name=\"META: BIOM\">"
+      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+#      - "<section id=\"meta_cdhit\" name=\"META: CDHIT\">"
 #      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-      - "<section id=\"tools\" name=\"Tools: Reheader\">"
-      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-      - "<section id=\"tools\" name=\"Tools: UCLUST conversion\">"
-      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-      - "<section id=\"tools\" name=\"Tools: Phyloseq\">"
-      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-      - "<section id=\"otu_biom\" name=\"META: BIOM\">"
-      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-#      - "<section id=\"otu_cdhit\" name=\"META: CDHIT\">"
+#      - "<section id=\"meta_cutadapt\" name=\"META: TRIMMING\">"
 #      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-#      - "<section id=\"otu_cutadapt\" name=\"OTU: TRIMMING\">"
-#      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-      - "<section id=\"otu_kraken\" name=\"META: KRAKEN\">"
+      - "<section id=\"meta_kraken\" name=\"META: KRAKEN\">"
       - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-      - "<section id=\"otu_mothur\" name=\"META: MOTHUR\">"
+      - "<section id=\"meta_mothur\" name=\"META: MOTHUR\">"
       - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-      - "<section id=\"otu_pear\" name=\"META: PEAR\">"
+      - "<section id=\"meta_pear\" name=\"META: PEAR\">"
       - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-      - "<section id=\"otu_vsearch\" name=\"META: VSEARCH\">"
+      - "<section id=\"meta_phyloseq\" name=\"META: PHYLOSEQ\">"
+      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      - "<section id=\"meta_vsearch\" name=\"META: VSEARCH\">"
       - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
     become: yes
     become_user: galaxy
@@ -156,7 +191,7 @@
   #    - "</section>"
   #  become: yes
   #  become_user: galaxy
-    
+
   #restart Galaxy
   - name: stop Galaxy
     shell: "{{ galaxy_server_dir }}/run.sh --pid-file=main.pid --log-file=main.log --stop-daemon"
@@ -193,36 +228,66 @@
     become: yes
     become_user: galaxy
 
+  #Copy the ncbi_taxonomy.loc file to /mnt/galaxyIndices/tool-data/dm/toolshed.g2.bx.psu.edu/repos
+  - name: Copy the ncbi_taxonomy.loc file to kraken repos diretory
+    copy: src="ncbi_taxonomy.loc" dest="{{ kraken_db_for_tax_path }}/ncbi_taxonomy.loc" owner=galaxy group=users
+    become: yes
+    become_user: galaxy
+
   #Copy the tool_data_table_conf.xml file to /mnt/galaxyIndices/tool-data/dm/toolshed.g2.bx.psu.edu/repos
   - name: Copy the tool_data_table.conf.xml file to kraken repos diretory
     copy: src="tool_data_table_conf.xml" dest="{{ kraken_db_config_path }}/tool_data_table_conf.xml" owner=galaxy group=users
     become: yes
     become_user: galaxy
 
-#  - name: modify tool_conf.xml
-#    lineinfile: dest="{{ galaxy_server_dir }}/config/tool_conf.xml" insertbefore="^</toolbox>" line="{{ item }}" state=present
-#    with_items:
-#      - "  <section id=\"tools\" name=\"Tools: History\">"
-#      - "    <tool file=\"history/historyRetrieval.xml\" />"
-#      - "  </section>\n"
-#    become: yes
-#    become_user: galaxy  
-  
+  #- name: modify tool_conf.xml
+  #  lineinfile: dest="{{ galaxy_server_dir }}/config/tool_conf.xml" insertbefore="^</toolbox>" line="{{ item }}" state=present
+  #  with_items:
+  #    - "  <section id=\"tools\" name=\"Tools: \">"
+  #    - "    <tool file=\"history/historyRetrieval.xml\" />"
+  #    - "  </section>\n"
+  #  become: yes
+  #  become_user: galaxy
+
   - name: modify tool_conf.xml
     lineinfile: dest="{{ galaxy_server_dir }}/config/tool_conf.xml" insertbefore="^</toolbox>" line="{{ item }}" state=present
     with_items:
-      - "  <section id=\"tools\" name=\"Tools: Reheader\">"
-      - "    <tool file=\"reheader/reheader.xml\" />"
-      - "  </section>\n"
-      - "  <section id=\"tools\" name=\"Tools: UCLUST Conversion\">"
+      - "  <section id=\"tools\" name=\"Tools: Create OTU Table\">"
       - "    <tool file=\"uc2otutable/uc2otutable_mod.xml\" />"
-      - "  </section>\n"
-      - "  <section id=\"tools\" name=\"Tools: Phyloseq\">"
-      - "    <tool file=\"phyloseq/phyloseq.xml\" />"
       - "  </section>\n"
     become: yes
     become_user: galaxy
-    
+
+  - name: modify tool_conf.xml
+    lineinfile: dest="{{ galaxy_server_dir }}/config/tool_conf.xml" insertbefore="^</toolbox>" line="{{ item }}" state=present
+    with_items:
+      - "  <section id=\"meta_phyloseq\" name=\"META: Phyloseq\">"
+      - "    <tool file=\"phyloseq/phyloseq.xml\" />"
+      - "    <tool file=\"phyloseq/phyloseq_richness.xml\" />"
+      - "    <tool file=\"phyloseq/phyloseq_abundance_factor.xml\" />"
+      - "    <tool file=\"phyloseq/phyloseq_abundance_kingdom.xml\" />"
+      - "  </section>\n"
+    become: yes
+    become_user: galaxy
+
+  - name: modify tool_conf.xml
+    lineinfile: dest="{{ galaxy_server_dir }}/config/tool_conf.xml" insertbefore="^</toolbox>" line="{{ item }}" state=present
+    with_items:
+      - "  <section id=\"tools\" name=\"Tools: Rename Sequence Header\">"
+      - "    <tool file=\"reheader/reheader.xml\" />"
+      - "  </section>\n"
+    become: yes
+    become_user: galaxy
+
+  - name: modify tool_conf.xml
+    lineinfile: dest="{{ galaxy_server_dir }}/config/tool_conf.xml" insertbefore="^</toolbox>" line="{{ item }}" state=present
+    with_items:
+      - "  <section id=\"tools\" name=\"Tools: Validate Metadata\">"
+      - "    <tool file=\"validateMeta/validateMeta.xml\" />"
+      - "  </section>\n"
+    become: yes
+    become_user: galaxy
+
   #Now de admin the user..
   #- name: De-admin the irida user
   #  replace: dest="{{ galaxy_config_file }}" regexp="{{ tools_admin_email}}[,]?" replace=""
