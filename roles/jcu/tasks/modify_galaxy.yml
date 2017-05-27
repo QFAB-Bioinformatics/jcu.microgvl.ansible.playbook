@@ -49,7 +49,7 @@
     copy: src="shed_tool_conf_cloud.xml" dest="{{ galaxy_server_dir }}/config/shed_tool_conf_cloud.xml" owner=galaxy group=users
     become: yes
     become_user: galaxy
-	
+
   - name: Install biom-format using pip
     pip: name=biom-format version=2.1.5 state=present
     become: yes
