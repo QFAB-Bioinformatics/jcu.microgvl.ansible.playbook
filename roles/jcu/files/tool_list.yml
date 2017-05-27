@@ -8,53 +8,53 @@ tools:
 
 - name: vsearch
   owner: iuc
-  tool_panel_section_id: "otu_vsearch"
+  tool_panel_section_id: "meta_vsearch"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
   revision: '4258854759ba'
 
 - name: biom_add_metadata
   owner: iuc
-  tool_panel_section_id: "otu_biom"
+  tool_panel_section_id: "meta_biom"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
   revision: '367b1ed91207'
  
 - name: biom_convert
   owner: iuc
-  tool_panel_section_id: "otu_biom"
+  tool_panel_section_id: "meta_biom"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
   
 - name: pear
   owner: iuc
-  tool_panel_section_id: "otu_pear"
+  tool_panel_section_id: "meta_pear"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
 #  revision: '581e52f03c5d'
 
 - name: kraken
   owner: devteam
-  tool_panel_section_id: "otu_kraken"
+  tool_panel_section_id: "meta_kraken"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
   
 - name: kraken2tax
   owner: devteam
-  tool_panel_section_id: "otu_kraken"
+  tool_panel_section_id: "meta_kraken"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
   revision: 'd844fdcce44e'
 
 - name: kraken_filter
   owner: devteam
-  tool_panel_section_id: "otu_kraken"
+  tool_panel_section_id: "meta_kraken"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
   revision: 'fe94f318048c'
 
 - name: kraken_report
   owner: devteam
-  tool_panel_section_id: "otu_kraken"
+  tool_panel_section_id: "meta_kraken"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
   revision: '9ae975c30dde'
 
 - name: kraken_translate
   owner: devteam
-  tool_panel_section_id: "otu_kraken"
+  tool_panel_section_id: "meta_kraken"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
   revision: 'b9971bca4b01'
 
@@ -66,7 +66,7 @@ tools:
 
 - name: mothur_toolsuite
   owner: jjohnson
-  tool_panel_section_id: "otu_mothur"
+  tool_panel_section_id: "meta_mothur"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
   revision: '1be61ceb20d7'
 
