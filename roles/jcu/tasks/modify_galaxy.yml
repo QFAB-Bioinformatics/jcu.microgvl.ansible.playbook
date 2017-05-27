@@ -138,8 +138,8 @@
   - name: Copy validateMeta script to galaxy_server_dir
     copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
     with_items:
-      - { src: 'uc2otutable_mod.py', dest: '{{ galaxy_server_dir }}/tools/uc2otutable/uc2otutable_mod.py' }
-      - { src: 'uc2otutable_mod.xml', dest: '{{ galaxy_server_dir }}/tools/uc2otutable/uc2otutable_mod.xml' }
+      - { src: 'uc2otutab_mod.py', dest: '{{ galaxy_server_dir }}/tools/uc2otutable/uc2otutab_mod.py' }
+      - { src: 'uc2otutab_mod.xml', dest: '{{ galaxy_server_dir }}/tools/uc2otutable/uc2otutab_mod.xml' }
       - { src: 'python_scripts.tar.gz', dest: '{{ galaxy_server_dir }}/tools/uc2otutable/python_scripts.tar.gz' }
     become: yes
     become_user: galaxy
