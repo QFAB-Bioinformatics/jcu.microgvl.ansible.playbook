@@ -38,19 +38,19 @@ tools:
   owner: devteam
   tool_panel_section_id: "otu_kraken"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
-  #revision: 'd844fdcce44e'
+  revision: 'd844fdcce44e'
 
 - name: kraken_filter
   owner: devteam
   tool_panel_section_id: "otu_kraken"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
-#  revision: 'fe94f318048c'
+  revision: 'fe94f318048c'
 
 - name: kraken_report
   owner: devteam
   tool_panel_section_id: "otu_kraken"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
-#  revision: '9ae975c30dde'
+  revision: '9ae975c30dde'
 
 - name: kraken_translate
   owner: devteam
