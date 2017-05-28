@@ -135,7 +135,7 @@
     become_user: galaxy
 
   #Copy uc2otutable.py and uc2otutable.xml to the /mnt/galaxy/galaxy-apps/tools/uc2otutable
-  - name: Copy validateMeta script to galaxy_server_dir
+  - name: Copy OTU table script to /mnt/galaxy/galaxy-apps/tools/uc2otutable
     copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
     with_items:
       - { src: 'uc2otutab_mod.py', dest: '{{ galaxy_server_dir }}/tools/uc2otutable/uc2otutab_mod.py' }
