@@ -149,6 +149,12 @@
     unarchive: src="{{ galaxy_server_dir }}/tools/uc2otutable/python_scripts.tar.gz" dest="{{ galaxy_server_dir }}/tools/uc2otutable/" owner=galaxy group=users mode=0755
     become: yes
     become_user: galaxy
+    
+  #Copy the tool list to galaxy_server_dir
+  - name: Copy the tool list to galaxy_server_dir
+    copy: src="uc.py" dest="{{ galaxy_server_dir }}/tools/uc2otutable/" owner=galaxy group=users
+    become: yes
+    become_user: galaxy
 
   - name: modify shed_tool_conf_cloud.xml
     lineinfile: dest="{{ galaxy_server_dir }}/config/shed_tool_conf_cloud.xml" insertbefore="^<section id=\"getext\" name=\"Get Data\" version=\"\">" line="{{ item }}" state=present
