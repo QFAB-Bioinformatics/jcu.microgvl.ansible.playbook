@@ -261,7 +261,7 @@
     lineinfile: dest="{{ galaxy_server_dir }}/config/tool_conf.xml" insertbefore="^</toolbox>" line="{{ item }}" state=present
     with_items:
       - "  <section id=\"tools\" name=\"Tools: Create OTU Table\">"
-      - "    <tool file=\"uc2otutable/uc2otutable_mod.xml\" />"
+      - "    <tool file=\"uc2otutable/uc2otutab_mod.xml\" />"
       - "  </section>\n"
     become: yes
     become_user: galaxy
