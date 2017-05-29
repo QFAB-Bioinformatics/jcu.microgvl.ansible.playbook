@@ -95,6 +95,8 @@
       - { src: 'phyloseq_abundance_factor.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_abundance_factor.xml' }
       - { src: 'phyloseq_abundance_kingdom.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_abundance_kingdom.r' }
       - { src: 'phyloseq_abundance_kingdom.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_abundance_kingdom.xml' }
+      - { src: 'phyloseq_abundance_kingdom.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_net.r' }
+      - { src: 'phyloseq_abundance_kingdom.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_net.xml' }
     become: yes
     become_user: galaxy
 
