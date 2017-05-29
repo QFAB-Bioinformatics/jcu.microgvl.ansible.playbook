@@ -270,10 +270,11 @@
     lineinfile: dest="{{ galaxy_server_dir }}/config/tool_conf.xml" insertbefore="^</toolbox>" line="{{ item }}" state=present
     with_items:
       - "  <section id=\"meta_phyloseq\" name=\"META: Phyloseq\">"
-      - "    <tool file=\"phyloseq/phyloseq.xml\" />"
+      #- "    <tool file=\"phyloseq/phyloseq.xml\" />"
       - "    <tool file=\"phyloseq/phyloseq_richness.xml\" />"
       - "    <tool file=\"phyloseq/phyloseq_abundance_factor.xml\" />"
       - "    <tool file=\"phyloseq/phyloseq_abundance_kingdom.xml\" />"
+      - "    <tool file=\"phyloseq/phyloseq_net.xml\" />"
       - "  </section>\n"
     become: yes
     become_user: galaxy
