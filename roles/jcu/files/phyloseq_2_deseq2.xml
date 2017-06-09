@@ -1,0 +1,30 @@
+<tool id="phyloseq_DESeq2" name="DESeq2" version="1.0" hidden="false">
+  <description>Phyloseq Abundance Plot on Kingdom level</description>
+  <command interpreter="Rscript">
+    phyloseq_2_deseq2.r --biomfile=$biom_input --metafile=$metadata_input --factor="${factor}" --test="${test}" --fitType="${fitType}" --cutoff=${cutoff} --result=$DE_table 
+  </command>
+ 
+  <inputs>
+    <param format="biom1" name="biom_input" type="data" label="BIOM file"/>
+    <param format="tabular" name="metadata_input" type="data" label="Metadata file"/>
+    <param name="factor" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="factor for differential analysis testing"/>
+    <param name="test" type="select" display="radio" label="select a test method">
+      <option value="Wald" selected="true">Wald</option>
+      <option value="LRT">LRT</option>
+    </param>
+    <param name="fitType" type="select" display="radio" label="select a fit Type for dispersions">
+      <option value="parametric" selected="true">parametric</option>
+      <option value="local">local</option>
+    </param>
+    <param name="cutoff" value="0.01" type="float" label="cutoff value for differential analysis"/>
+  </inputs>
+ 
+  <outputs>
+        <data format="tabular" name="DE_table" label="${tool.name}.html"/>
+  </outputs>
+ 
+  <help>
+    **What it does**
+    Take both BIOM and metadata file as input to perform a differential analysis using DESeq2 package in R.   
+  </help>
+</tool>
