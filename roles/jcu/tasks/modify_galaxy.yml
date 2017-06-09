@@ -99,6 +99,20 @@
       - { src: 'phyloseq_abundance_kingdom.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_net.xml' }
     become: yes
     become_user: galaxy
+    
+  #Create DESeq2 directory if it doesn't exist
+  - name: Create Phyloseq directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
+    file: path="{{ galaxy_server_dir }}/tools/otuDESeq2" state=directory owner=galaxy group=users mode=0755
+    become: yes
+    become_user: galaxy
+    
+  - name: Copy phyloseq_2_deseq2 script to galaxy_server_dir
+    copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
+    with_items:
+      - { src: 'phyloseq_2_deseq2.r', dest: '{{ galaxy_server_dir }}/tools/otuDESeq2/phyloseq_2_deseq2.py' }
+      - { src: 'phyloseq_2_deseq2.xml', dest: '{{ galaxy_server_dir }}/tools/otuDESeq2/phyloseq_2_deseq2.xml' }
+    become: yes
+    become_user: galaxy
 
   #Create Reheader directory if it doesn't exist
   - name: Create Reheader directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
