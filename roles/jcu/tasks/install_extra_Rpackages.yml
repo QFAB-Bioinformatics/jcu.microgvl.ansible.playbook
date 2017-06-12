@@ -10,6 +10,7 @@
     with_items:
       - ape
       - getopt
+      - Cairo
     become: yes
     become_user: root
 
@@ -26,3 +27,22 @@
       - edgeR
     become: yes
     become_user: root
+    
+  #Install extra R libraries.
+  - name: Add some R packages.
+    command: >
+      Rscript --slave --no-save --no-restore-history -e "if (! ('{{ item }}' %in% installed.packages()[,'Package'])) { install.packages(pkgs='{{ item }}', repos=c('http://cran.ms.unimelb.edu.au/')); print('Added'); } else { print('Already installed'); }"
+    register: r_result
+    failed_when: "r_result.rc != 0 or 'had non-zero exit status' in r_result.stderr"
+    changed_when: "'Added' in r_result.stdout"
+    with_items:
+      - knitr
+    become: yes
+    become_user: ubuntu
+  
+  # copy knitr site-library directory from /usr/local/lib/R/site-library/knitr  to /home/linuxbrew/.linuxbrew/lib/R/3.3/site-library
+  - name: Copy knitr site-library directory
+    copy: src=/usr/local/lib/R/site-library/knitr/ dest=/home/linuxbrew/.linuxbrew/lib/R/3.3/site-library/ 
+    become: yes
+    become_user: root
+
