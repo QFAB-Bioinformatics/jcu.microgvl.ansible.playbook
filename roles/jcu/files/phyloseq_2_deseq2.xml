@@ -1,5 +1,5 @@
 <tool id="phyloseq_DESeq2" name="DESeq2" version="1.0" hidden="false">
-  <description>Phyloseq Abundance Plot on Kingdom level</description>
+  <description>Differential Analysis</description>
   <command interpreter="Rscript">
     phyloseq_2_deseq2.r --biomfile=$biom_input --metafile=$metadata_input --factor="${factor}" --test="${test}" --fitType="${fitType}" --cutoff=${cutoff} --result=$DE_table 
   </command>
