@@ -74,39 +74,9 @@ if(nrow(significant.table) == 0){
 
 significant.table <- cbind(as(significant.table,"data.frame"), as(tax_table(AIP_galaxy)[rownames(significant.table),],"matrix"))
 
-#significant.table <- format(round(significant.table, 4), nsmall = 4)
 
 write.table(format(significant.table, digits=4, scientific=F),file=options$result,col.names=T,row.names=T,quote=F,sep="\t")
 
 
-#colnames(tax_table(AIP_galaxy)) <- tax_col_galaxy
 
 
-#pdffile <- gsub("[ ]+", "", paste(options$outdir,"/kingdom.pdf"))
-#pngfile_kingdom <- gsub("[ ]+", "", paste(options$outdir,"/kingdom.png"))
-#htmlfile <- gsub("[ ]+", "", paste(options$htmlfile))
-
-
-# Produce PDF file
-#pdf(pdffile);
-#plot_bar(AIP_galaxy,x=x.selectedColumn,facet_grid = paste('~', tax.selected),fill=l.selectedColumn)
-#garbage<-dev.off();
-
-#png('kingdom.png')
-#bitmap(pngfile_kingdom,"png16m")
-#plot_bar(AIP_galaxy,x=x.selectedColumn,facet_grid = paste('~', tax.selected),fill=l.selectedColumn)
-#garbage<-dev.off()
-
-# Produce the HTML file
-#htmlfile_handle <- file(htmlfile)
-#html_output = c('<html><body>',
-#	        '<table align="center>',
-#		'<tr>',
-#		'<td valign="middle" style="vertical-align:middle;">',
-#                '<a href="kingdom.pdf"><img src="kingdom.png"/></a>',
-#		'</td>',
-#		'</tr>',
-#		'</table>',
-#                '</html></body>');
-#writeLines(html_output, htmlfile_handle);
-#close(htmlfile_handle);
