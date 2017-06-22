@@ -109,7 +109,7 @@
   - name: Copy phyloseq_2_deseq2 script to galaxy_server_dir
     copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
     with_items:
-      - { src: 'phyloseq_2_deseq2.r', dest: '{{ galaxy_server_dir }}/tools/otuDESeq2/phyloseq_2_deseq2.py' }
+      - { src: 'phyloseq_2_deseq2.r', dest: '{{ galaxy_server_dir }}/tools/otuDESeq2/phyloseq_2_deseq2.r' }
       - { src: 'phyloseq_2_deseq2.xml', dest: '{{ galaxy_server_dir }}/tools/otuDESeq2/phyloseq_2_deseq2.xml' }
     become: yes
     become_user: galaxy
@@ -160,7 +160,7 @@
     become: yes
     become_user: galaxy
     
-  # unarchive a file that is in the machine
+  # unarchive a python script from Drive5
   - name: Extract archive
     unarchive: src="{{ galaxy_server_dir }}/tools/uc2otutable/python_scripts.tar.gz" dest="{{ galaxy_server_dir }}/tools/uc2otutable/" owner=galaxy group=users mode=0755
     become: yes
@@ -169,6 +169,28 @@
   #Copy the tool list to galaxy_server_dir
   - name: Copy the tool list to galaxy_server_dir
     copy: src="uc.py" dest="{{ galaxy_server_dir }}/tools/uc2otutable/" owner=galaxy group=users
+    become: yes
+    become_user: galaxy
+    
+  #Create FragGeneScan directory if it doesn't exist
+  - name: Create FragGeneScane directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
+    file: path="{{ galaxy_server_dir }}/tools/fragGeneScan" state=directory owner=galaxy group=users mode=0755
+    become: yes
+    become_user: galaxy
+
+  #Copy FragGeneScan_galaxy.sh and uc2otutable.xml to the /mnt/galaxy/galaxy-apps/tools/fragGeneScane
+  - name: Copy FragGeneScan wrapper script to /mnt/galaxy/galaxy-apps/tools/fragGeneScan
+    copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
+    with_items:
+      - { src: 'FragGeneScan_galaxy.sh', dest: '{{ galaxy_server_dir }}/tools/fragGeneScane/FragGeneScan_galaxy.sh' }
+      - { src: 'run_FragGeneScan.xml', dest: '{{ galaxy_server_dir }}/tools/fragGeneScan/run_FragGeneScan.xml' }
+      - { src: 'FragGeneScan1.18.tar.gz', dest: '{{ galaxy_server_dir }}/tools/fragGeneScan/FragGeneScan1.18.tar.gz' }
+    become: yes
+    become_user: galaxy
+    
+  # unarchive a FragGeneScan File
+  - name: Extract archive FragGeneScan
+    unarchive: src="{{ galaxy_server_dir }}/tools/fragGeneScan/FragGeneScan1.18.tar.gz" dest="{{ galaxy_server_dir }}/tools/fragGeneScan/" owner=galaxy group=users mode=0755
     become: yes
     become_user: galaxy
 
@@ -276,6 +298,7 @@
     with_items:
       - "  <section id=\"tools\" name=\"Tools: Create OTU Table\">"
       - "    <tool file=\"uc2otutable/uc2otutab_mod.xml\" />"
+      - "    <tool file="fragGeneScan/run_FragGeneScan.xml" />"
       - "  </section>\n"
     become: yes
     become_user: galaxy
@@ -284,11 +307,11 @@
     lineinfile: dest="{{ galaxy_server_dir }}/config/tool_conf.xml" insertbefore="^</toolbox>" line="{{ item }}" state=present
     with_items:
       - "  <section id=\"meta_phyloseq\" name=\"META: Phyloseq\">"
-      #- "    <tool file=\"phyloseq/phyloseq.xml\" />"
       - "    <tool file=\"phyloseq/phyloseq_richness.xml\" />"
       - "    <tool file=\"phyloseq/phyloseq_abundance_factor.xml\" />"
       - "    <tool file=\"phyloseq/phyloseq_abundance_kingdom.xml\" />"
       - "    <tool file=\"phyloseq/phyloseq_net.xml\" />"
+      - "    <tool file="otuDESeq2/phyloseq_2_deseq2.xml" />"
       - "  </section>\n"
     become: yes
     become_user: galaxy
