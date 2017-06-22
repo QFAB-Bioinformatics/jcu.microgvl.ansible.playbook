@@ -1,0 +1,49 @@
+<tool id="fgs" name="FragGeneScan" version="0.1.0">
+  <description>for finding Open Reading Frame</description>
+  <!--<command interpreter="perl">run_FragGeneScan.pl -genome=$input -out=$output -complete=$type -train=$model</command>-->
+  <command interpreter="bash">
+  FragGeneScan_galaxy.sh $input $prefix $type $model $ffn $faa $out $gff $__tool_directory__ > $log
+  </command>
+  <inputs>
+    <param format="fasta" name="input" type="data" label="Source file"/>
+    <param name="type" type="select" display="radio" label="select input type">
+      <option value="0">0</option>
+      <option value="1">1</option>
+    </param>
+     <param name="model" type="select" display="radio" label="select sequence error rate">
+      <option value="sanger_5">sanger_5</option>
+      <option value="sanger_10">sanger_10</option>
+      <option value="454_5">454_5</option>
+      <option value="454_10">454_10</option>
+      <option value="454_30">454_30</option>
+      <option value="Illumina_5">illumina_5</option>
+      <option value="Illumina_10">illumina_10</option>
+     </param>
+  </inputs>
+  <outputs>
+    <!--<data format="fasta" name="output" from_work_dir="output" label="${tool.name}"/>-->
+    
+    <data format="fasta" name="prefix" label="${tool.name} prefix" hidden="True"/>
+    <data format="fasta" name="ffn" label="${tool.name} on ${on_string} ffn"/>
+    <data format="fasta" name="faa" label="${tool.name} on ${on_string} faa"/>
+    <data format="txt" name="out" label="${tool.name} on ${on_string} out"/>
+    <data format="gff" name="gff" label="${tool.name} on ${on_string} gff"/>
+    <!--<data format="fasta" name="output" from_work_dir="/mnt/galaxy/files/001/${output}.ffn" label="${tool.name}"/>-->
+    <data format="txt" name="log" label="${tool.name} on ${on_string} log"/>
+  </outputs>
+
+  <tests>
+    <test>
+      <param name="input" value="kraken.fasta"/>
+      <param name="output" value="test"/>
+      <param name="type" value="0"/>
+      <param name="model" value="sanger_5"/>
+      <output name="output" file="fa_gc_content_output.txt"/>
+    </test>
+  </tests>
+
+  <help>
+    This tool is used to find open reading frame in sequence.
+  </help>
+
+</tool>
