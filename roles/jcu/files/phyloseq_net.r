@@ -61,8 +61,8 @@ garbage<-dev.off();
 #png('richness.png')
 #bitmap(pngfile_richness,"png16m")
 Cairo(pngfile_net, type="png", bg="white",pointsize=12,dpi=100,units="in",width=6,height=6)
-#plot_net(AIP_galaxy,point_label=x.selectedColumn,color=l.selectedColumn)
-plot_net(AIP_galaxy,point_label="Trio",color="Protein")
+plot_net(AIP_galaxy,point_label=x.selectedColumn,color=l.selectedColumn)
+#plot_net(AIP_galaxy,point_label="Trio",color="Protein")
 garbage<-dev.off()
 
 # Produce the HTML file
