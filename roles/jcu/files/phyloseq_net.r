@@ -61,8 +61,18 @@ garbage<-dev.off();
 #png('richness.png')
 #bitmap(pngfile_richness,"png16m")
 Cairo(pngfile_net, type="png", bg="white",pointsize=12,dpi=100,units="in",width=6,height=6)
+#plot_net(AIP_galaxy,point_label=x.selectedColumn,color=l.selectedColumn)
+
+tryCatch({
 plot_net(AIP_galaxy,point_label=x.selectedColumn,color=l.selectedColumn)
-#plot_net(AIP_galaxy,point_label="Trio",color="Protein")
+},warning = function(war){
+  print(paste("MY_WARNING:  ",war)) 
+},error = function(err) {
+  print(paste("MY_ERROR:  ", "Please check OTU table"))   
+},finally = {
+  print(paste("End Try&Catch")) 
+})
+
 garbage<-dev.off()
 
 # Produce the HTML file
