@@ -58,9 +58,10 @@ pdf(pdffile);
 tryCatch({
 plot_net(AIP_galaxy,point_label=x.selectedColumn,color=l.selectedColumn)
 },warning = function(war){
-  print(paste("MY_WARNING:  ",war)) 
+  print(paste("WARNING:  ",war)) 
 },error = function(err) {
-  print(paste("MY_ERROR:  ", "Please check OTU table"))   
+  print(paste("ERROR:  ", "Please check OTU table"))   
+  quit("yes")
 },finally = {
   print(paste("End Try&Catch")) 
 })
@@ -74,9 +75,10 @@ Cairo(pngfile_net, type="png", bg="white",pointsize=12,dpi=100,units="in",width=
 tryCatch({
 plot_net(AIP_galaxy,point_label=x.selectedColumn,color=l.selectedColumn)
 },warning = function(war){
-  print(paste("MY_WARNING:  ",war)) 
+  print(paste("WARNING:  ",war)) 
 },error = function(err) {
-  print(paste("MY_ERROR:  ", "Please check OTU table"))   
+  print(paste("ERROR:  ", "Please check OTU table"))  
+  quit("yes")
 },finally = {
   print(paste("End Try&Catch")) 
 })
