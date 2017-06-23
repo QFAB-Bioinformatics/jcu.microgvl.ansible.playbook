@@ -47,6 +47,9 @@
   # A system path for Galaxy's main configuration file
   galaxy_config_file: "{{ galaxy_server_dir }}/config/galaxy.ini"
 
+  #InterProScan5 path
+  InterProScan5_path: "{{ galaxy_tools_shed_dir }}/bgruening/interproscan5/e32f2ea6a139"
+
   # Kraken databases config file destination
   kraken_db_config_path: "{{ galaxy_indices_dir }}/devteam/kraken/b2392a9dfb01"
   kraken_db_for_tax_path: "{{ galaxy_indices_dir }}/devteam/kraken2tax/d844fdcce44e"
