@@ -55,7 +55,15 @@ htmlfile <- gsub("[ ]+", "", paste(options$htmlfile))
 # Produce PDF file
 pdf(pdffile);
 #plot_net(AIP_galaxy,point_label=x.selectedColumn,color=l.selectedColumn)
-plot_net(AIP_galaxy,point_label="Trio",color="Protein")
+tryCatch({
+plot_net(AIP_galaxy,point_label=x.selectedColumn,color=l.selectedColumn)
+},warning = function(war){
+  print(paste("MY_WARNING:  ",war)) 
+},error = function(err) {
+  print(paste("MY_ERROR:  ", "Please check OTU table"))   
+},finally = {
+  print(paste("End Try&Catch")) 
+})
 garbage<-dev.off();
 
 #png('richness.png')
