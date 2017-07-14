@@ -30,12 +30,12 @@ rdict_remove = {
 
 def makesubs(s):
     for pattern, repl in rdict.iteritems():
-        s = re.sub(pattern, repl,s)
+        s = re.sub(pattern +'_?[A-Za-z0-9]+$', repl,s)
     return s
 
 def makesubs_remove(s):
     for pattern, repl in rdict_remove.iteritems():
-        s = re.sub(pattern, repl,s)
+        s = re.sub(pattern +'_?[A-Za-z0-9]+$', repl,s)
     return s
 
 def appendStringToSequenceHeader(inputfile,header_to_add):
