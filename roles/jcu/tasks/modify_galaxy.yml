@@ -89,6 +89,23 @@
   #  become: yes
   #  become_user: galaxy
 
+#Create Symmetric plot  directory if it doesn't exist
+  - name: Create Phyloseq directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
+    file: path="{{ galaxy_server_dir }}/tools/symmetricPlot" state=directory owner=galaxy group=users mode=0755
+    become: yes
+    become_user: galaxy
+
+
+  #Copy historyRetrieval.py and historyRetrieval.xml to the /mnt/galaxy/galaxy-apps/tools/history
+  - name: Copy history script to galaxy_server_dir
+    copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
+    with_items:
+      - { src: 'symmetric_plot.r', dest: '{{ galaxy_server_dir }}/tools/symmetricPlot/symmetric_plot.r' }
+      - { src: 'symmetric_plot.xml', dest: '{{ galaxy_server_dir }}/tools/symmetricPlot/symmetric_plot.xml' }
+      - { src: 'symmetric_plot_2.r', dest: '{{ galaxy_server_dir }}/tools/symmetricPlot/symmetric_plot_2.r' }
+      - { src: 'symmetric_plot_2.xml', dest: '{{ galaxy_server_dir }}/tools/symmetricPlot/symmetric_plot_2.xml' }
+    become: yes
+    become_user: galaxy
 
   #Create Phyloseq directory if it doesn't exist
   - name: Create Phyloseq directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
@@ -311,7 +328,7 @@
     with_items:
       - "  <section id=\"tools\" name=\"Tools: Create OTU Table\">"
       - "    <tool file=\"uc2otutable/uc2otutab_mod.xml\" />"
-      - "    <tool file="fragGeneScan/run_FragGeneScan.xml" />"
+      - "    <tool file=\"fragGeneScan/run_FragGeneScan.xml\" />"
       - "  </section>\n"
     become: yes
     become_user: galaxy
@@ -323,8 +340,10 @@
       - "    <tool file=\"phyloseq/phyloseq_richness.xml\" />"
       - "    <tool file=\"phyloseq/phyloseq_abundance_factor.xml\" />"
       - "    <tool file=\"phyloseq/phyloseq_abundance_kingdom.xml\" />"
+      - "    <tool file=\"symmetricPlot/symmetric_plot.xml\" />"
+      - "    <tool file=\"symmetricPlot/symmetric_plot_2.xml\" />"
       - "    <tool file=\"phyloseq/phyloseq_net.xml\" />"
-      - "    <tool file="otuDESeq2/phyloseq_2_deseq2.xml" />"
+      - "    <tool file=\"otuDESeq2/phyloseq_2_deseq2.xml\" />"
       - "  </section>\n"
     become: yes
     become_user: galaxy
