@@ -74,7 +74,7 @@ tools:
   owner: bgruening
   tool_panel_section_id: "tools"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
-  revision: 'e32f2ea6a139'
+  #revision: 'e32f2ea6a139'
 
 - name: split_file
   owner: bgruening
