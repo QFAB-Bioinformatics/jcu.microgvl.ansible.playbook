@@ -200,7 +200,7 @@
   - name: Copy FragGeneScan wrapper script to /mnt/galaxy/galaxy-apps/tools/fragGeneScan
     copy: src={{ item.src }} dest={{ item.dest }} owner=galaxy group=users
     with_items:
-      - { src: 'FragGeneScan_galaxy.sh', dest: '{{ galaxy_server_dir }}/tools/fragGeneScane/FragGeneScan_galaxy.sh' }
+      - { src: 'FragGeneScan_galaxy.sh', dest: '{{ galaxy_server_dir }}/tools/fragGeneScan/FragGeneScan_galaxy.sh' }
       - { src: 'run_FragGeneScan.xml', dest: '{{ galaxy_server_dir }}/tools/fragGeneScan/run_FragGeneScan.xml' }
       - { src: 'FragGeneScan1.18.tar.gz', dest: '{{ galaxy_server_dir }}/tools/fragGeneScan/FragGeneScan1.18.tar.gz' }
     become: yes
