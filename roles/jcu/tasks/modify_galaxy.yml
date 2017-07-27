@@ -55,18 +55,6 @@
     become: yes
     become_user: root
     
-  - name: Gets InterProScan5 tarball
-    get_url:
-      url="ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.24-63.0/interproscan-5.24-63.0-64-bit.tar.gz"
-      dest="{{ InterProScan5_path}}/interproscan5/"
-    register: new_archive
-    become:yes
-    become_user: galaxy
-  
-  - name: Extract archive FragGeneScan
-    unarchive: src="{{ InterProScan5_path}}/interproscan5/interproscan-5.24-63.0-64-bit.tar.gz" dest="{{ InterProScan5_path}}/interproscan5/" owner=galaxy group=users mode=0755
-    become: yes
-    become_user: galaxy
   
   #Create a symlink for SamToFastq.jar in bam_to_fastq directory
   - name: Create a symlink for SamToFastq.jar
@@ -289,6 +277,19 @@
     become: yes
     become_user: galaxy
     ignore_errors: true
+    
+  - name: Gets InterProScan5 tarball
+    get_url:
+      url="ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.24-63.0/interproscan-5.24-63.0-64-bit.tar.gz"
+      dest="{{ InterProScan5_path}}/interproscan5/"
+    register: new_archive
+    become:yes
+    become_user: galaxy
+  
+  - name: Extract archive FragGeneScan
+    unarchive: src="{{ InterProScan5_path}}/interproscan5/interproscan-5.24-63.0-64-bit.tar.gz" dest="{{ InterProScan5_path}}/interproscan5/" owner=galaxy group=users mode=0755
+    become: yes
+    become_user: galaxy
     
   #Copy the kraken_databases.loc file to /mnt/galaxyIndices/tool-data/dm/toolshed.g2.bx.psu.edu/repos
   - name: Copy the kraken_databases.loc file to kraken repos diretory
