@@ -239,6 +239,8 @@
       - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
       - "<section id=\"meta_phyloseq\" name=\"META: PHYLOSEQ\">"
       - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      - "<section id=\"meta_seqtk\" name=\"META: SEQTK\">"
+      - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
       - "<section id=\"meta_vsearch\" name=\"META: VSEARCH\">"
       - "  </section>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
     become: yes
