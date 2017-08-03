@@ -78,7 +78,7 @@ tools:
   
 - name: seqtk
   owner: iuc
-  tool_panel_section_id: "tools"
+  tool_panel_section_id: "meta_seqtk"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
   #revision: 'bc7d99f46a5d'
 
