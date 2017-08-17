@@ -322,6 +322,12 @@
     copy: src="seqtk_sample.xml" dest="{{ seqtk_path }}/seqtk/seqtk_sample.xml" owner=galaxy group=users
     become: yes
     become_user: galaxy
+    
+  #Copy the modified pear.xml file to /mnt/galaxy/shed_tools/toolshed.g2.bx.psu.edu/repos/iuc/pear/240f611a46f3/pear
+  - name: Copy the tool_data_table.conf.xml file to kraken repos diretory
+    copy: src="pear.xml" dest="{{ pear_path }}/pear/pear.xml" owner=galaxy group=users
+    become: yes
+    become_user: galaxy
 
   #- name: modify tool_conf.xml
   #  lineinfile: dest="{{ galaxy_server_dir }}/config/tool_conf.xml" insertbefore="^</toolbox>" line="{{ item }}" state=present
