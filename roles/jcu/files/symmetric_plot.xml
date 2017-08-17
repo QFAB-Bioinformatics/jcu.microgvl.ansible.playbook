@@ -1,5 +1,5 @@
 <tool id="symmetricPlot2" name="Symmetric Plot" version="1.0" hidden="false" force_history_refresh="True">>
-  <description>Symmetric Plot 2</description>
+  <description>Symmetric Plot</description>
   <command interpreter="Rscript">
     symmetric_plot.r --input.data=$input_table --meta.data=$meta_table --obs.data=$obs_table --taxrank=$taxonomy_rank --record=$nTop --norm="${norm_bool}" --n.column="${selectedCol}" --g.group="${group}" --outdir="$htmlfile.files_path" --htmlfile=$htmlfile 
   </command>
