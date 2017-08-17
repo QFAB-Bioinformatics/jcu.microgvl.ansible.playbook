@@ -1,4 +1,4 @@
-<tool id="fastqStat" name="PEAR Statistics" force_history_refresh="True">
+<tool id="pearStat" name="PEAR Statistics" force_history_refresh="True">
   <description>Obtain the Statistic of PEAR</description>
 <!--  <command interpreter="bash">-->
  <!--fastq_stats.sh $input.display_name $input $output-->
