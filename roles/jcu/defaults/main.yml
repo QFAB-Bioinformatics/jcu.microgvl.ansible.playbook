@@ -53,7 +53,7 @@
   #seqtk_sample xml path
   seqtk_path: "{{ galaxy_tools_shed_dir }}/iuc/seqtk/bc7d99f46a5d"
   
-  #seqtk_sample xml path
+  #pear xml path
   pear_path: "{{ galaxy_tools_shed_dir }}/iuc/pear/240f611a46f3"
 
   # Kraken databases config file destination
