@@ -1,6 +1,6 @@
 ---
   # Versions
-  xtandem_version: ""
+  workflow_version: ""
   
   # Paths
   gvl_apps_home: "/mnt/gvl/apps"  
@@ -49,6 +49,9 @@
 
   #InterProScan5 path
   InterProScan5_path: "{{ galaxy_tools_shed_dir }}/bgruening/interproscan5/e32f2ea6a139"
+  
+  #seqtk_sample xml path
+  seqtk_path: "{{ galaxy_tools_shed_dir }}/iuc/seqtk/bc7d99f46a5d"
 
   # Kraken databases config file destination
   kraken_db_config_path: "{{ galaxy_indices_dir }}/devteam/kraken/b2392a9dfb01"
