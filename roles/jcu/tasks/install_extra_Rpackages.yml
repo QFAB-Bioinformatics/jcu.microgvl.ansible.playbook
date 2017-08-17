@@ -42,7 +42,7 @@
   
   # copy knitr site-library directory from /usr/local/lib/R/site-library/knitr  to /home/linuxbrew/.linuxbrew/lib/R/3.3/site-library
   - name: Copy knitr site-library directory
-    copy: src=/usr/local/lib/R/site-library/knitr/ dest=/home/linuxbrew/.linuxbrew/lib/R/3.3/site-library/ 
+    copy: src=/usr/local/lib/R/site-library/knitr/ dest=/home/linuxbrew/.linuxbrew/lib/R/3.3/site-library/knitr/
     become: yes
     become_user: root
 
