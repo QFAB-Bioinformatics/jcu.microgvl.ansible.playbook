@@ -1,0 +1,37 @@
+<tool id="fastqStat" name="PEAR Statistics" force_history_refresh="True">
+  <description>Obtain the Statistic of PEAR</description>
+<!--  <command interpreter="bash">-->
+ <!--fastq_stats.sh $input.display_name $input $output-->
+<!-- #set files = '" "'.join( [ str( $file ) for $file in $input ] )-->
+
+<!-- #bash $__tool_directory__/fastq_stats.sh '${names}' $output-->
+  <command interpreter="python"><![CDATA[
+      #set files=""
+      #for $index,$file in enumerate($input):
+        #set $files += str($file)+","
+      #end for
+      #set $files=$files[:-1]
+
+      #set names=','.join( [ str( $name ) for $name in $input.keys() ])      
+
+      $__tool_directory__/pear_stats.py "$files" "$names" $output
+   ]]> </command>
+  <inputs>
+    <param name="input" type="data_collection" format="txt" label="FASTQ file"/>
+  </inputs>
+  <outputs>
+    <!--<data format="tabular" name="output" label="${tool.name}.${input.display_name}"/>-->
+    <data format="tabular" name="output" label="${tool.name}.log"/>
+  </outputs>
+  <tests>
+    <test>
+      <param name="test_input" value="test_input.txt"/>
+      <output name="test_outout" file="test_output.txt"/>
+    </test>
+  </tests>
+
+  <help>
+    This tool is used to count the number of sequences in FASTQ file.
+  </help>
+
+</tool>
