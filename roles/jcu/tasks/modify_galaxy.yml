@@ -319,7 +319,7 @@
      
   #Copy the seqtk_sample.xml file to /mnt/galaxy/shed_tools/toolshed.g2.bx.psu.edu/repos/iuc/seqtk/bc7d99f46a5d/seqtk/
   - name: Copy the tool_data_table.conf.xml file to kraken repos diretory
-    copy: src="seqtk_sample.xml" dest="{{ seqtk_path }}/seqtk_sample.xml" owner=galaxy group=users
+    copy: src="seqtk_sample.xml" dest="{{ seqtk_path }}/seqtk/seqtk_sample.xml" owner=galaxy group=users
     become: yes
     become_user: galaxy
 
