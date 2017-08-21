@@ -1,0 +1,89 @@
+<tool id="cat_multiple" name="Concatenate multiple datasets" version="0.1">
+    <description>tail-to-head</description>
+    <command><![CDATA[
+
+       cat 
+       #for $f in $f1# 
+         #if $f.is_collection# 
+            #for $inner in {$f.forward}# 
+              $inner
+            #end for# 
+         #else#  
+              $f # 
+	  #end if#
+      #end for# 
+      >> "$out_file1"
+        ]]>
+    </command>
+    <inputs>
+       <param name="f1" type="data_collection"/>
+    </inputs>
+    <outputs>
+
+        <data name="out_file1" format="fastq" label="merge files"/>
+
+    </outputs>
+    <tests>
+        <test>
+            <param name="input" value="1.bed,2.bed"/>
+            <output name="out_file1" file="cat_wrapper_out1.bed"/>
+        </test>
+    </tests>
+    <help>
+
+.. class:: warningmark
+
+**WARNING:** Be careful not to concatenate datasets of different kinds (e.g., sequences with intervals). This tool does not check if the datasets being concatenated are in the same format.
+
+-----
+
+**What it does**
+
+Concatenates forward reads in FASTQ format from data collection
+
+-----
+
+**Example**
+
+Concatenating Dataset::
+
+    @M03033:102:000000000-ATN0P:1:1110:9065:13771_Sample13/1
+    TTAGATACCCGGGTAGTCCACGCAGTAAACGATGAATGCTAATTGTCCGGAGGGAT
+    +
+    EGFFGFEGFFEGGGGFEEF9E:CFFGFEGDEFFEGFFGFEGFFEGGGGFEEF9E:C
+
+with Dataset1::
+
+    @M03033:102:000000000-ATN0P:1:2102:17440:16321_Sample18/1
+    TTAGATACCCTGGTAGTCCACGCCGTAAACGATGACTACTAGGTGTCGGGTGGCAA
+    +
+    FGEFGGGEEGGGGGFFFAFCF@CFCFF9FFGGFCE59CFGEECCE@FGEFGGGEEG
+
+and with Dataset2::
+
+    @M03033:102:000000000-ATN0P:1:2102:17440:20111_Sample120/1
+    TTCCTTCGGGACAGGGGAGTCAGGTGGTGCATGGTTGTCGTCAGCTCGTGTCGTGG
+    +
+    FFGGFGFGGE9EDFGGGGGGGGGEGGECFGEFCCGGFGGGFGGFFGGFGFGGE9ED
+
+will result in the following::
+
+    @M03033:102:000000000-ATN0P:1:1110:9065:13771_Sample13/1
+    TTAGATACCCGGGTAGTCCACGCAGTAAACGATGAATGCTAATTGTCCGGAGGGAT
+    +
+    EGFFGFEGFFEGGGGFEEF9E:CFFGFEGDEFFEGFFGFEGFFEGGGGFEEF9E:C
+    @M03033:102:000000000-ATN0P:1:2102:17440:16321_Sample18/1
+    TTAGATACCCTGGTAGTCCACGCCGTAAACGATGACTACTAGGTGTCGGGTGGCAA
+    +
+    FGEFGGGEEGGGGGFFFAFCF@CFCFF9FFGGFCE59CFGEECCE@FGEFGGGEEG
+    @M03033:102:000000000-ATN0P:1:2102:17440:20111_Sample120/1
+    TTCCTTCGGGACAGGGGAGTCAGGTGGTGCATGGTTGTCGTCAGCTCGTGTCGTGG
+    +
+    FFGGFGFGGE9EDFGGGGGGGGGEGGECFGEFCCGGFGGGFGGFFGGFGFGGE9ED
+
+-----
+
+Adapted from galaxy's catWrapper.xml to allow multiple input files
+
+    </help>
+</tool>
