@@ -148,7 +148,7 @@
     become_user: galaxy
     
  # Create catWrapper.xml to the /mnt/galaxy-apps/tools/concat_fastq
- - name: Create concat_fastq directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
+  - name: Create concat_fastq directory in galaxy_server_dir (/mnt/galaxy/galaxy-apps/tools/)
     file: path="{{ galaxy_server_dir }}/tools/concat_fastq" state=directory owner=galaxy group=users mode=0755
     become: yes
     become_user: galaxy
@@ -300,7 +300,7 @@
     become: yes
     become_user: galaxy
   
-  - name: Extract archive FragGeneScan
+  - name: Extract archive InterProScan5
     unarchive: src="{{ InterProScan5_path}}/interproscan5/interproscan-5.24-63.0-64-bit.tar.gz" dest="{{ InterProScan5_path}}/interproscan5/" owner=galaxy group=users mode=0755
     become: yes
     become_user: galaxy
