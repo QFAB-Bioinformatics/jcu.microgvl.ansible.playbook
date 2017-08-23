@@ -5,6 +5,11 @@
   # Paths
   gvl_apps_home: "/mnt/gvl/apps"  
   
+  # Environments
+  install_env:
+        TEMPDIR: "/mnt/gvl/tmp"
+        TEMP: "/mnt/gvl/tmp"
+  
   # galaxy tool repos path
   galaxy_indices_dir: /mnt/galaxyIndices/tool-data/dm/toolshed.g2.bx.psu.edu/repos
 
