@@ -296,6 +296,7 @@
     get_url:
       url="ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.24-63.0/interproscan-5.24-63.0-64-bit.tar.gz"
       dest="{{ InterProScan5_path}}/interproscan5/"
+    environment: "{{ install_env }}"
     register: new_archive
     become: yes
     become_user: galaxy
