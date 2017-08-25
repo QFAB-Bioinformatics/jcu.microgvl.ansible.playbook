@@ -15,8 +15,6 @@ outdir = sys.argv[4]
 logfile = sys.argv[5]
 
 rdict = {
-    '_R1.fastq':'/1',
-    '_R2.fastq':'/2',
     '_R1': '/1',
     '_R2': '/2',
     '_1': '/1',
@@ -24,8 +22,6 @@ rdict = {
 }
 
 rdict_remove = {
-    '_R1.fastq':'',
-    '_R2.fastq':'',
     '_R1': '',
     '_R2': '',
     '_1': '',
@@ -34,12 +30,21 @@ rdict_remove = {
 
 def makesubs(s):
     for pattern, repl in rdict.iteritems():
-        s = re.sub(pattern +'_?[A-Za-z0-9]+$', repl,s)
+        pat1 = pattern +'_?[A-Za-z0-9]+$'
+        pat2 = pattern
+        combined_pat = r'|'.join((pat1, pat2))
+        #s = re.sub(pattern +'_?[A-Za-z0-9]+$', repl,s)
+        s = re.sub(combined_pat, repl,s)
     return s
 
 def makesubs_remove(s):
     for pattern, repl in rdict_remove.iteritems():
-        s = re.sub(pattern +'_?[A-Za-z0-9]+$', repl,s)
+        pat1 = pattern +'_?[A-Za-z0-9]+$'
+        pat2 = pattern
+        combined_pat = r'|'.join((pat1, pat2))
+        #s = re.sub(combined_pat, repl,s)
+        #s = re.sub(pattern +'_?[A-Za-z0-9]+$', repl,s)
+        s = re.sub(combined_pat, repl,s)
     return s
 
 def appendStringToSequenceHeader(inputfile,header_to_add):
@@ -53,7 +58,9 @@ def appendStringToSequenceHeader(inputfile,header_to_add):
     return records
 
 str_to_search = makesubs_remove(str_to_add)
+print str_to_search
 str_to_add = makesubs(str_to_add)
+print str_to_add
 final_records=[]
 outlogfile=open(os.path.join(outdir,logfile),"w")
 
@@ -67,7 +74,9 @@ outlogfile=open(os.path.join(outdir,logfile),"w")
 #    SeqIO.write(final_records, outfile , "fastq")
 #    outlogfile.close()
 #else:
+
 final_records=appendStringToSequenceHeader(infile,str_to_add)
 outlogfile.write(str_to_search)
+print outfile
 SeqIO.write(final_records, outfile , "fastq")
 outlogfile.close()
