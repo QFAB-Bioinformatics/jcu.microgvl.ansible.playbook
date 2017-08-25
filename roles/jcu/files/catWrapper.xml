@@ -16,11 +16,11 @@
         ]]>
     </command>
     <inputs>
-       <param name="f1" type="data_collection" label="${tool.name} merged"/>
+       <param name="f1" type="data_collection" label="Paired-end reads in data collection"/>
     </inputs>
     <outputs>
 
-        <data name="out_file1" format="fastqsanger" label="merge files"/>
+        <data name="out_file1" format="fastqsanger" label="${tool.name} merged"/>
 
     </outputs>
     <tests>
