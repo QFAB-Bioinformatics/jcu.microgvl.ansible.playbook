@@ -15,6 +15,8 @@ outdir = sys.argv[4]
 logfile = sys.argv[5]
 
 rdict = {
+    '_R1.fastq':'/1',
+    '_R2.fastq':'/2',
     '_R1': '/1',
     '_R2': '/2',
     '_1': '/1',
@@ -22,6 +24,8 @@ rdict = {
 }
 
 rdict_remove = {
+    '_R1.fastq':'',
+    '_R2.fastq':'',
     '_R1': '',
     '_R2': '',
     '_1': '',
