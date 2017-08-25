@@ -27,7 +27,7 @@ tools:
   owner: iuc
   tool_panel_section_id: "meta_pear"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
-#  revision: '581e52f03c5d'
+  revision: '581e52f03c5d'
 
 - name: kraken
   owner: devteam
