@@ -50,7 +50,7 @@ tools:
   owner: devteam
   tool_panel_section_id: "meta_kraken"
   tool_shed_url: http://toolshed.g2.bx.psu.edu/
-  revision: '9ae975c30dde'
+  revision: 'a3a7440fc618'
 
 - name: kraken_translate
   owner: devteam
