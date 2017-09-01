@@ -64,5 +64,6 @@
   # Kraken databases config file destination
   kraken_db_config_path: "{{ galaxy_indices_dir }}/devteam/kraken/2fdac3e78553"
   kraken_db_for_tax_path: "{{ galaxy_indices_dir }}/devteam/kraken2tax/d844fdcce44e"
-  kraken_mpa_report_path: "{{ galaxy_tools_shed_dir }}/devteam/kraken_report/9ae975c30dde"
+  #kraken_mpa_report_path: "{{ galaxy_tools_shed_dir }}/devteam/kraken_report/9ae975c30dde"
+  kraken_mpa_report_path: "{{ galaxy_tools_shed_dir }}/devteam/kraken_report/a3a7440fc618"
 ...
