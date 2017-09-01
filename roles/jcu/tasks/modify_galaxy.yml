@@ -360,6 +360,24 @@
     copy: src="pear.xml" dest="{{ pear_path }}/pear/pear.xml" owner=galaxy group=users
     become: yes
     become_user: galaxy
+  
+  #Copy the pear tarball to /mnt/galaxy/shed_tools/toolshed.g2.bx.psu.edu/repos/iuc/pear/240f611a46f3/pear
+  - name: Copy pear tarball to pear directory
+    copy: src="pear-0.9.10-linux-x86_64.tar.gz" dest="{{ pear_path }}/pear/pear-0.9.10-linux-x86_64.tar.gz" owner=galaxy group=users
+    become: yes
+    become_user: galaxy
+
+  # untar pear
+  - name: Extract archive pear tarball
+    unarchive: src="{{ pear_path }}/pear/pear-0.9.10-linux-x86_64.tar.gz" dest="{{ pear_path }}/pear/" owner=galaxy group=users mode=0755
+    become: yes
+    become_user: galaxy
+
+  # create a symlink for pear
+  - name: set symlink
+    file: src={{ pear_path }}/pear/pear-0.9.10-linux-x86_64/bin/pear dest={{ pear_path }}/pear/pear state=link owner=galaxy group=users mode=0755
+    become: yes
+    become_user: galaxy
 
   #- name: modify tool_conf.xml
   #  lineinfile: dest="{{ galaxy_server_dir }}/config/tool_conf.xml" insertbefore="^</toolbox>" line="{{ item }}" state=present
