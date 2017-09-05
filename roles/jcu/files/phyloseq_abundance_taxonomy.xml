@@ -1,5 +1,5 @@
 <tool id="phyloseq_kingdom" name="Phyloseq Abundance Taxonomy" version="1.0" hidden="false">
-  <description>Phyloseq Abundance Plot on Kingdom level</description>
+  <description>Phyloseq Abundance Plot on Taxonomy level</description>
   <command interpreter="Rscript">
     phyloseq_abundance_kingdom.r --biomfile=$biom_input --metafile=$metadata_input --xcolumn="${xaxis_column}" --lcolumn="${legend_column}" --taxonomy="${taxonomy_rank}" --outdir="$htmlfile.files_path" --htmlfile=$htmlfile
   
