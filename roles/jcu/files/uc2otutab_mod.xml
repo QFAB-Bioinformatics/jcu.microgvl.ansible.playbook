@@ -16,7 +16,14 @@
   </tests>
 
   <help>
-    This tool is used rename the sequence header in FASTQ file
+** what it does **
+
+This tool is used convert the UCLUST format (.uc) from Vsearch into raw count table in tabular format. The description of UCLUST format is based on the information that can be found on UCLUST_ documentation page.
+
+.. _UCLUST: http://www.drive5.com/uclust/uclust_userguide_1_1_579.html
+
+--------
+
   </help>
 
 </tool>
