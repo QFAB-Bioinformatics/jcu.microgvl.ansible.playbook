@@ -115,8 +115,8 @@
       - { src: 'phyloseq_richness.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_richness.xml' }
       - { src: 'phyloseq_abundance_factor.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_abundance_factor.r' }
       - { src: 'phyloseq_abundance_factor.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_abundance_factor.xml' }
-      - { src: 'phyloseq_abundance_kingdom.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_abundance_kingdom.r' }
-      - { src: 'phyloseq_abundance_kingdom.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_abundance_kingdom.xml' }
+      - { src: 'phyloseq_abundance_taxonomy.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_abundance_taxonomy.r' }
+      - { src: 'phyloseq_abundance_taxonomy.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_abundance_taxonomy.xml' }
       - { src: 'phyloseq_net.r', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_net.r' }
       - { src: 'phyloseq_net.xml', dest: '{{ galaxy_server_dir }}/tools/phyloseq/phyloseq_net.xml' }
     become: yes
@@ -311,19 +311,19 @@
     become_user: galaxy
     ignore_errors: true
     
-  - name: Gets InterProScan5 tarball
-    get_url:
-      url="ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.24-63.0/interproscan-5.24-63.0-64-bit.tar.gz"
-      dest="{{ InterProScan5_path}}/interproscan5/"
-    environment: "{{ install_env }}"
-    register: new_archive
-    become: yes
-    become_user: galaxy
+#  - name: Gets InterProScan5 tarball
+#    get_url:
+#      url="ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.24-63.0/interproscan-5.24-63.0-64-bit.tar.gz"
+#      dest="{{ InterProScan5_path}}/interproscan5/"
+#    environment: "{{ install_env }}"
+#    register: new_archive
+#    become: yes
+#    become_user: galaxy
   
-  - name: Extract archive InterProScan5
-    unarchive: src="{{ InterProScan5_path}}/interproscan5/interproscan-5.24-63.0-64-bit.tar.gz" dest="{{ InterProScan5_path}}/interproscan5/" owner=galaxy group=users mode=0755
-    become: yes
-    become_user: galaxy
+#  - name: Extract archive InterProScan5
+#    unarchive: src="{{ InterProScan5_path}}/interproscan5/interproscan-5.24-63.0-64-bit.tar.gz" dest="{{ InterProScan5_path}}/interproscan5/" owner=galaxy group=users mode=0755
+#    become: yes
+#    become_user: galaxy
     
   #Copy the kraken_databases.loc file to /mnt/galaxyIndices/tool-data/dm/toolshed.g2.bx.psu.edu/repos
   - name: Copy the kraken_databases.loc file to kraken repos diretory
@@ -406,7 +406,7 @@
       - "  <section id=\"meta_phyloseq\" name=\"META: Phyloseq\">"
       - "    <tool file=\"phyloseq/phyloseq_richness.xml\" />"
       - "    <tool file=\"phyloseq/phyloseq_abundance_factor.xml\" />"
-      - "    <tool file=\"phyloseq/phyloseq_abundance_kingdom.xml\" />"
+      - "    <tool file=\"phyloseq/phyloseq_abundance_taxonomy.xml\" />"
       - "    <tool file=\"symmetricPlot/symmetric_plot.xml\" />"
       - "    <tool file=\"symmetricPlot/symmetric_plot_2.xml\" />"
       - "    <tool file=\"phyloseq/phyloseq_net.xml\" />"
