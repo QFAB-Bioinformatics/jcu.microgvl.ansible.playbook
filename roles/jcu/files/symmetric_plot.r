@@ -80,7 +80,7 @@ sample2group.map <- data.frame(sample=colnames(input.table[,c(group1,group2)]),
                                    rep(group.df$group[2],length(group2))))
 
 
-if(!options$norm){
+if(options$norm =="false"){
 ### raw count table
     count.table<-input.table
     rownames(count.table)<-count.table[,1]
