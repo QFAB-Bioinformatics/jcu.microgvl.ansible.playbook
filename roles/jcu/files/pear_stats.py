@@ -36,7 +36,8 @@ for element in xrange(0,len(inputfiles)):
     outputfile.write("\n")
 
 averageAssembled = allAssembled / len(inputfiles)
-averageAssembledOut=["Average assembled % =",str(averageAssembled)]
+averageAssembledOut=["The above assessment has been performed on 1000 randomly selected reads per sample file.\nAverage % of overlapping paired-end reads =",str(averageAssembled),"\nIf the average percentage is greater than 50%, you can consider using workflow 16S_biodiversity_for_overlap_PE.\nHowever, if the average percentage is less than 50%, use 16S_biodiversity_nonoverlap_PE."]
+
 
 outputfile.write("\n\n\n")
 outputfile.write("\t".join(averageAssembledOut))
