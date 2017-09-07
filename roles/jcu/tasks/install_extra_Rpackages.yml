@@ -11,6 +11,7 @@
       - ape
       - getopt
       - Cairo
+      - tidyr
     become: yes
     become_user: root
 
