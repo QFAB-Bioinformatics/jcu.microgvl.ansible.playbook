@@ -5,7 +5,7 @@ suppressPackageStartupMessages(library('phyloseq'))
 Sys.setenv("DISPLAY"=":1")
 
 #http://saml.rilspace.com/creating-a-galaxy-tool-for-r-scripts-that-output-images-and-pdfs
-
+options(warn=-1)
 option_specification = matrix(c(
    'biomfile','b',2,'character',
    'metafile','m',2,'character',
