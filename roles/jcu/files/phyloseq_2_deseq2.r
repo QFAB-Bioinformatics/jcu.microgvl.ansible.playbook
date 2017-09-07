@@ -29,9 +29,6 @@ if (!is.null(options$outdir)) {
   dir.create(options$outdir,FALSE)
 }
 
-gm_mean = function(x, na.rm=TRUE){
-  exp(sum(log(x[x > 0]), na.rm=na.rm) / length(x))
-}
 
 galaxy_biom <- import_biom(options$biomfile)
 galaxy_map <- import_qiime_sample_data(options$metafile)
@@ -55,14 +52,26 @@ method<-options$test
 Type<-options$fitType
 cutoff<-options$cutoff
 
+
+
 suppressMessages(deseq2_obj<-phyloseq_to_deseq2(AIP_galaxy,as.formula(paste('~',Infactor,sep=""))))
+gm_mean = function(x, na.rm=TRUE){
+  exp(sum(log(x[x > 0]), na.rm=na.rm) / length(x))
+}
 geoMeans = apply(counts(deseq2_obj), 1, gm_mean)
 deseq2_obj = estimateSizeFactors(deseq2_obj, geoMeans = geoMeans)
+
+
+
+### Normalisation
+deseq2_obj_norm<-counts(deseq2_obj,normalized=T)
+deseq2_obj_norm.out<-as.data.frame(cbind("OTUID"=rownames(deseq2_obj_norm),deseq2_obj_norm))
+write.table(deseq2_obj_norm.out,file=options$normalisedResult,col.names=T,row.names=F,quote=F,sep="\t")
+
+
+### Normalisation and DE analysis
 suppressMessages(deseq2_obj_DE<-DESeq(deseq2_obj,test=method,fitType=Type))
-
-
 res = results(deseq2_obj_DE,cooksCutoff = FALSE)
-
 
 significant.table <-res[which(res$padj < cutoff),]
 
@@ -73,10 +82,13 @@ if(nrow(significant.table) == 0){
 }
 
 
+
+
 significant.table <- cbind(as(significant.table,"data.frame"), as(tax_table(AIP_galaxy)[rownames(significant.table),],"matrix"))
 
+significant.table.out<-as.data.frame(cbind("OTUID"=rownames(significant.table),significant.table))
 
-write.table(format(significant.table, digits=4, scientific=F),file=options$result,col.names=T,row.names=T,quote=F,sep="\t")
+write.table(format(significant.table.out, digits=4, scientific=F),file=options$result,col.names=T,row.names=F,quote=F,sep="\t")
 
 
 
