@@ -16,6 +16,7 @@ option_specification = matrix(c(
      'cutoff','c','2','double',
      'outdir','o',2,'character',
    'result','r',2,'character'
+   'normalisedResult','n','2','character'
 ),byrow=TRUE,ncol=4);
 
 
