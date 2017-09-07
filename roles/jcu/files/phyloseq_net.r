@@ -107,7 +107,7 @@ x.selectedColumn<-colnames(galaxy_map)[options$xcolumn]
 l.selectedColumn<-colnames(galaxy_map)[options$lcolumn]
 
 ### normalisation
-if(is.null(options$norm) || !options$norm){
+if(is.null(options$norm) || options$norm=="false"){
 suppressMessages(raw.count.deseq2.obj<-phyloseq_to_deseq2(physeq_galaxy,as.formula(paste('~',x.selectedColumn,sep=""))))
 geoMeans = apply(counts(raw.count.deseq2.obj), 1, gm_mean)
 
