@@ -36,8 +36,26 @@
   </outputs>
  
   <help>
-    **What it does**
-    Take both BIOM and metadata file as input and generate plots using phyloseq
-    
+**What it does**
+Creates an abundance barplot using an R package called phyloseq_.
+
+.. _phyloseq: https://joey711.github.io/phyloseq/plot_bar-examples.html
+
+-----
+
+**Input**
+
+
+- **BIOM file** - this is a BIOM_ file format
+- **Metadata file** - this is a metadata file of the experiment design
+- **Column used for X-axis** - The horizontal x-axis display on the barplot.
+- **Column used as legend** - select a group from the metadata to fill color to represent the group it belongs to.
+- **Is this one factor or two factor** - This is the facet_grid feature of phyloseq's plot_bar to allow plotting with two factors (e.g, facet_grid=~protein + allergy)
+- **Column used as factor 1 ** - This useds to select the first factor for facet_grid feature from the metadata file
+
+.. _BIOM: http://biom-format.org/
+
+-----
+
   </help>
 </tool>
