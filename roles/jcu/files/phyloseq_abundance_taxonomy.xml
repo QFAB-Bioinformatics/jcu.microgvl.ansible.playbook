@@ -26,8 +26,26 @@
   </outputs>
  
   <help>
-    **What it does**
-    Take both BIOM and metadata file as input and generate Abundance plot on taxonomy level
-    
+**What it does**
+Creates an abundance with taxonomy barplot using an R package called phyloseq_.
+
+.. _phyloseq: https://joey711.github.io/phyloseq/plot_bar-examples.html
+
+-----
+
+**Input**
+
+
+- **BIOM file** - this is a BIOM_ file format
+- **Metadata file** - this is a metadata file of the experiment design
+- **Column used for X-axis** - The horizontal x-axis display on the barplot.
+- **Column used as legend** - select a group from the metadata to fill color to represent the group it belongs to.
+- **Select a taxonomy rank** - This is a taxonomy selection.
+
+
+.. _BIOM: http://biom-format.org/
+
+-----
+
   </help>
 </tool>
