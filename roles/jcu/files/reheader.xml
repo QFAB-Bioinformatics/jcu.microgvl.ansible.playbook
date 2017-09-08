@@ -19,15 +19,40 @@
   </tests>
 
   <help>
-    This tool is used to rename the sequence header in FASTQ file by appending SAMPLEFILENAME/1 to the end of the sequence header for the forward read or SAMPLEFILENAME_2 to the end of the sequence header for the reverse read.
-    Example:
-    Forward Read
-    Input sequence header : @M03033:102:000000000-ATN0P:1:1101:9793:1042
-    Output sequence header : @M03033:102:000000000-ATN0P:1:1101:9793:1042_Sample1/1
+**what it does**
 
-    Reverse Read
-    Input sequence header : @M03033:102:000000000-ATN0P:1:1101:9793:1042
-    Output sequence header : @M03033:102:000000000-ATN0P:1:1101:9793:1042_Sample1/2
+Renames sequence header in FASTQ file by appending SAMPLEFILENAME/1 to the end of the sequence header for the forward read
+or SAMPLEFILENAME_2 to the end of the sequence header for the reverse read.
+
+------
+
+Forward Read
+------------
+-----
+Input
+-----
+sequence header : @M03033:102:000000000-ATN0P:1:1101:9793:1042
+
+------
+Output
+------
+sequence header : @M03033:102:000000000-ATN0P:1:1101:9793:1042_Sample1/1
+
+Reverse Read
+------------
+
+-----
+Input
+-----
+sequence header : @M03033:102:000000000-ATN0P:1:1101:9793:1042
+
+------
+Output
+------
+sequence header : @M03033:102:000000000-ATN0P:1:1101:9793:1042_Sample1/2
+
+------
+
   </help>
 
 </tool>
