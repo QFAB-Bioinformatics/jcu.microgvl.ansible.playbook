@@ -27,7 +27,7 @@
     </conditional>
 <!--<param name="biom_bool" type="boolean" truevalue="true" falsevalue="false" checked="false" label="Is this a BIOM file?"/>-->
     <param format="tabular" name="metadata_input" type="data" label="Metadata file"/>
-    <param name="xaxis_column" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="Column used for X-axis"/>
+    <param name="xaxis_column" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="Select a group for distance matrix"/>
     <param name="legend_column" type="data_column" data_ref="metadata_input" use_header_names="TRUE" label="Column used as legend"/>
   </inputs>
  
@@ -36,8 +36,27 @@
   </outputs>
  
   <help>
-    **What it does**
-    Take both BIOM and metadata file as input and generate plots using phyloseq
-    
+**What it does**
+Creates a correlation network plot between samples using an R package called phyloseq_.
+
+.. _phyloseq: https://joey711.github.io/phyloseq/plot_network-examples.html
+
+-----
+
+**Input**
+
+
+- **Choose a file type** - choose the input file type (e.g., BIOM or count table)
+- **Input file** - choose the input file
+- **Observation** - appear only if the "count table" selected in "choose a file type"
+- **is the data normalised** - appear only if the "count table" selected in "choose a file type"
+- **Select a group for distance matrix** - This group will be used to calculate the distance matrix
+- **Column used as legend** - select a group from the metadata to fill color to represent the group it belongs to.
+
+
+.. _BIOM: http://biom-format.org/
+
+-----
+
   </help>
 </tool>
