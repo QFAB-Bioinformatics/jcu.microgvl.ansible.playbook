@@ -39,7 +39,9 @@
   </tests>
 
   <help>
-    This tool is used to combine the content of a list of input text files from data collection.
+** what it does **
+Combines all log files output from reheader tool and compares the library name with metadata.
+
   </help>
 
 </tool>
