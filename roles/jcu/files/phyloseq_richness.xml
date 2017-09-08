@@ -17,9 +17,9 @@
  
   <help>
 **What it does**
-Creates an alpha biodivesrsity abundance barplot using an R package called phyloseq_.
+Creates an alpha biodivesrsity abundance plot using an R package called phyloseq_.
 
-.. _phyloseq: https://joey711.github.io/phyloseq/plot_bar-examples.html
+.. _phyloseq: https://joey711.github.io/phyloseq/plot_richness-examples.html
 
 -----
 
