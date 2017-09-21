@@ -6,11 +6,11 @@
   </command>
   <inputs>
     <param format="fasta" name="input" type="data" label="Source file"/>
-    <param name="type" type="select" display="radio" label="select input type">
+    <param name="type" type="select" display="radio" label="Select input type">
       <option value="0">0</option>
       <option value="1">1</option>
     </param>
-     <param name="model" type="select" display="radio" label="select sequence error rate">
+     <param name="model" type="select" display="radio" label="Select sequencing error rate">
       <option value="sanger_5">sanger_5</option>
       <option value="sanger_10">sanger_10</option>
       <option value="454_5">454_5</option>
