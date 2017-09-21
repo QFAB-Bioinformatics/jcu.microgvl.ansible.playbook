@@ -43,7 +43,38 @@
   </tests>
 
   <help>
-    This tool is used to find open reading frame in sequence.
+**What it does**
+FragGeneScan_ is an application for finding genes in short reads.
+
+.. FragGeneScan: http://omics.informatics.indiana.edu/FragGeneScan/README
+
+-----
+
+**Input**
+
+- **Source file** - A FASTA file
+- **Select input type** - 0 if the sequence file has short sequence reads; 1 if the sequence file has complete genomic sequences.
+- **Select sequencing error rate** - Sequencing error rate from different sequencing platform.
+
+[complete] for complete genomic sequences or short sequence reads without sequencing error
+[sanger_5] for Sanger sequencing reads with about 0.5% error rate
+[sanger_10] for Sanger sequencing reads with about 1% error rate
+[454_10] for 454 pyrosequencing reads with about 1% error rate
+[454_30] for 454 pyrosequencing reads with about 3% error rate
+[illumina_5] for Illumina sequencing reads with about 0.5% error rate
+[illumina_10] for Illumina sequencing reads with about 1% error rate
+
+
+Citation
+=========
+If you use FragGeneScan, please cite:
+Mina Rho, Haixu Tang, and Yuzhen Ye. FragGeneScan: Predicting Genes in Short and Error-prone Reads. Nucl. Acids Res., 2010 doi: 10.1093/nar/gkq747
+
+License
+============
+Copyright (C) 2010 Mina Rho, Yuzhen Ye and Haixu Tang.
+You may redistribute this software under the terms of the GNU General Public License.
+
   </help>
 
 </tool>
