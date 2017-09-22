@@ -1,0 +1,31 @@
+<tool id="KrakenAnnotation" name="Kraken to Annotation" version="1.0" hidden="false" force_history_refresh="True">>
+  <description>Make annotation File</description>
+  <command interpreter="Rscript">
+    kraken_annotation.r --input.file=$input_table --output.file=$output_table
+  </command>
+ 
+  <inputs>
+    <param format="tabular" name="input_table" type="data" label="Kraken converted output"/>
+  </inputs>
+ 
+  <outputs>
+    <data format="tabular" name="output_table" label="${tool.name}_taxonomy"/>   
+  </outputs>
+ 
+  <help>
+
+** what it does **
+create an annotation file from kraken output.
+  
+-----
+   
+- **Input table** - Select a table from kraken convert tool.
+
+-----
+
+**Wrapper Author**
+
+QFAB Bioinformatics (support@qfab.org)
+
+  </help>
+</tool>
