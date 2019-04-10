@@ -1,5 +1,5 @@
 # jcu.microgvl.ansible.playbook
 
-Ansible script to install tools into the GALAXY in GVL.
+This an Ansible script to install 16S tools to GALAXY in GVL.
 
 
