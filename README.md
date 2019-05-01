@@ -2,12 +2,6 @@
 
 This an Ansible script to install 16S tools to GALAXY in GVL.
 
-    ____  _____    _    ____  
-   |  _ \| ____|  / \  |  _ \ 
-   | |_) |  _|   / _ \ | |_) |
-   |  __/| |___ / ___ \|  _ < 
-   |_|   |_____/_/   \_\_| \_\
-    
 ....Paired-End reAd mergeR....
 
 Authors: Jiajie Zhang, Kassian Kobert, Tomas Flouri, Alexandros Stamatakis
