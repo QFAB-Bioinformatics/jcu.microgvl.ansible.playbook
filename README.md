@@ -23,7 +23,6 @@ How to Install:
 1. git clone https://github.com/QFAB-Bioinformatics/jcu.microgvl.ansible.playbook
 2. ansible-playbook -vvv playbook.yml
 
-
  ____  _____    _    ____
 |  _ \| ____|  / \  |  _ \
 | |_) |  _|   / _ \ | |_) |
