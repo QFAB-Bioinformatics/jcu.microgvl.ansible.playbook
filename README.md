@@ -18,9 +18,12 @@ Codename:       trusty
 
 How to Install:
 ---------------
-1. git clone https://github.com/QFAB-Bioinformatics/jcu.microgvl.ansible.playbook
-2. ansible-playbook -vvv playbook.yml
+1. obtain PEAR tool from the author (see instruction below)
+2. untar the PEAR tool to the desire directory.
+3. git clone https://github.com/QFAB-Bioinformatics/jcu.microgvl.ansible.playbook
+4. ansible-playbook -vvv playbook.yml
 
+Note: The latest PEAR tool should be a binary release. if not, installation is required.
 
 ```
     ____  _____    _    ____
