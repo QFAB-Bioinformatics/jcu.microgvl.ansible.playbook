@@ -2,10 +2,6 @@
 
 This an Ansible script to install 16S tools to GALAXY in GVL.
 
-How to install:
-1. git clone https://github.com/QFAB-Bioinformatics/jcu.microgvl.ansible.playbook
-2. ansible-playbook -vvv playbook.yml
-
 How to Install:
 ---------------
 1. git clone https://github.com/QFAB-Bioinformatics/jcu.microgvl.ansible.playbook
