@@ -23,11 +23,11 @@ How to Install:
 1. git clone https://github.com/QFAB-Bioinformatics/jcu.microgvl.ansible.playbook
 2. ansible-playbook -vvv playbook.yml
 
- ____  _____    _    ____
-|  _ \| ____|  / \  |  _ \
-| |_) |  _|   / _ \ | |_) |
-|  __/| |___ / ___ \|  _ <
-|_|   |_____/_/   \_\_| \_\
+ ____  _____    _    ____  
+|  _ \| ____|  / \  |  _ \   
+| |_) |  _|   / _ \ | |_) |  
+|  __/| |___ / ___ \|  _ <  
+|_|   |_____/_/   \_\_| \_\  
 
 ....Paired-End reAd mergeR....
 
