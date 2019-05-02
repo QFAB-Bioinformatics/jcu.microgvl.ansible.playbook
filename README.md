@@ -20,8 +20,10 @@ How to Install:
 ---------------
 1. obtain PEAR tool from the author (see instruction below)
 2. git clone https://github.com/QFAB-Bioinformatics/jcu.microgvl.ansible.playbook
-3. cd to the 
-4. ansible-playbook -vvv playbook.yml
+3. move the binary PEAR tarball to dictory jcu.microgvl.ansible.playbook/roles/jcu/files
+4. edit file jcu.microgvl.ansible.playbook/roles/jcu/tasks/modify_galaxy.xml to replace the PEAR tarball filename by the new PEAR tarball filename
+5. go back to the directory where the jcu.microgvl.ansible.playbook is cloned
+6. ansible-playbook -vvv playbook.yml
 
 Note: The latest PEAR tool should be a binary release. if not, installation is required.
 
