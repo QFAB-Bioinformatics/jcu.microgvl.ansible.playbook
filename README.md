@@ -2,9 +2,13 @@
 
 This is an Ansible script to install 16S tools to GALAXY in Genomics Virtual Laboratory(GVL). This GVL is deployed on Nectar infrastructure. see link https://nectar.org.au/?portfolio=genomics-virtual-lab.
 
+
+
 GVL information:
 Microbial GVL version: 0.11-1
 Build date: 2016-05-26T05:24:31Z
+
+
 
 Ubuntu:
 Distributor ID: Ubuntu
@@ -12,11 +16,12 @@ Description:    Ubuntu 14.04.5 LTS
 Release:        14.04
 Codename:       trusty
 
+
+
 How to Install:
 ---------------
 1. git clone https://github.com/QFAB-Bioinformatics/jcu.microgvl.ansible.playbook
 2. ansible-playbook -vvv playbook.yml
-
 
 
     ____  _____    _    ____
