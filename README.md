@@ -39,13 +39,13 @@ Note: The latest PEAR tool should be a binary release. if not, installation is r
 
 ....Paired-End reAd mergeR....
 
-
+```
 Authors: Jiajie Zhang, Kassian Kobert, Tomas Flouri, Alexandros Stamatakis
 
 License: Creative Commons license
                 with
 Attribution-NonCommercial-ShareAlike 3.0 Unported
-
+```
 Introduction:
 -------------
 PEAR  assembles  Illumina paired-end reads if the DNA fragment sizes are smaller
