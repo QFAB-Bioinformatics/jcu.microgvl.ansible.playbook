@@ -1,4 +1,5 @@
 # jcu.microgvl.ansible.playbook
+[![DOI](https://zenodo.org/badge/78711504.svg)](https://zenodo.org/badge/latestdoi/78711504)
 
 This is an Ansible script to install 16S tools to GALAXY in Genomics Virtual Laboratory(GVL). This GVL is deployed on Nectar infrastructure. see link https://nectar.org.au/?portfolio=genomics-virtual-lab.
 
