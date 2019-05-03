@@ -16,6 +16,9 @@ Release:        14.04
 Codename:       trusty
 ```
 
+The tutorial data can be download here: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.800651.svg)](https://doi.org/10.5281/zenodo.800651)
+
+
 How to Install:
 ---------------
 1. obtain PEAR tool from the author (see instruction below)
