@@ -18,6 +18,10 @@ Codename:       trusty
 
 The tutorial data can be found here:  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.800651.svg)](https://doi.org/10.5281/zenodo.800651)
 
+```
+FragGeneScan is available through the link below
+http://omics.informatics.indiana.edu/FragGeneScan/
+```
 
 How to Install:
 ---------------
